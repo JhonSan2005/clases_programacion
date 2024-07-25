@@ -1,0 +1,3 @@
+
+
+En esta carpeta se encuentran todos los documentos y elementos necesarios para dar soporte al sitio sin publicarlos, en otras palabras, los activos.

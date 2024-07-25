@@ -1,0 +1,21 @@
+﻿drop schema bd_prueba_instalacion;
+create schema bd_prueba_instalacion;
+USE bd_prueba_instalacion;
+
+SHOW DATABASES;
+SHOW TABLES;
+
+DROP TABLE geo_paises;
+DROP TABLE geo_ciudades;
+DROP TABLE geo_departamentos;
+
+
+SELECT * FROM information_schema.tables WHERE table_schema = 'bd_cabf_sena';
+SELECT DISTINCT TABLE_TYPE FROM information_schema.tables;
+SELECT * FROM information_schema.tables WHERE table_schema = 'bd_prueba_instalacion' AND table_name = 'geo_paises';
+SELECT * FROM information_schema.tables WHERE table_schema = 'bd_prueba_instalacion' AND table_name = 'geo_departamentos';
+SELECT * FROM information_schema.tables WHERE table_schema = 'bd_prueba_instalacion' AND table_name LIKE 'geo_%';
+
+SELECT * FROM information_schema.TABLE_CONSTRAINTS
+WHERE TABLE_SCHEMA = 'bd_prueba_instalacion'
+AND CONSTRAINT_NAME = 'fk_dpto_pais';

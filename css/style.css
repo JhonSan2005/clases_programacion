@@ -1,0 +1,45 @@
+:root {
+    --bgMain: #F1F1F1;
+}
+
+body {
+    min-height: 100vh;
+    background-color: var(--bgMain);
+}
+
+/* NavBar */
+.logo img {
+    width: 200px;
+    height: 120px;
+}
+
+.main-content {
+    margin-top: 10px;
+    min-height: 72vh;
+}
+
+.card--category {
+    display: flex;
+    place-content: center;
+    height: 180px;
+}
+
+.card--product {
+    overflow: hidden;
+    width: 16rem;
+    transition: box-shadow 300ms ease-in;
+}
+
+.card--product:hover {
+    box-shadow: 1px 1px 10px 2px rgba(0, 0, 0, 0.1);
+}
+
+.card--product img:hover {
+    transition: transform 0.3s ease-in;
+    transform: scale(1.1);
+}
+
+footer {
+    bottom: 0;
+    margin-bottom: 0;
+}
