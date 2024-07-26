@@ -7,7 +7,7 @@ class ProductosController {
         echo "Desde index en Productos Controller";
     }
 
-}
+} 
 
 
 ?>

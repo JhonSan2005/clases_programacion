@@ -13,7 +13,7 @@ class Router {
     public function post( $path, $fn ) {
         $this->postRoutes[$path] = $fn;
     }
-
+ 
     public function verifyRoutes() {
 
         $current_url = $_SERVER['PATH_INFO'] ?? '/';
