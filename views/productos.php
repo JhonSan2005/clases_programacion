@@ -1,29 +1,5 @@
 <section id="nuestros-programas">
     <div class="container">
-
-        <h2 class="text-center my-4">Categorías</h2>
-
-        <div class="row justify-content-center">
-            <div class="col-md-4 col-sm-6 mb-4">
-                <div class="card card--category text-center" style="background-image: linear-gradient(0deg, rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('../img/repuestos.jpg');">
-                    <h3 class="text-white">REPUESTOS</h3>
-                    <a href="oils.php"><button class="btn btn-warning">VER +</button></a>
-                </div>
-            </div>
-            <div class="col-md-4 col-sm-6 mb-4">
-                <div class="card card--category text-center" style="background-image: linear-gradient(0deg, rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('../img/aceites.png');">
-                    <h3 class="text-white">ACEITES</h3>
-                    <a href="controlador.php?seccion=seccion2"><button class="btn btn-warning">VER +</button></a>
-                </div>
-            </div>
-            <div class="col-md-4 col-sm-6 mb-4">
-                <div class="card card--category text-center" style="background-image: linear-gradient(0deg, rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('../img/llantas.png');">
-                    <h3 class="text-white">LLANTAS</h3>
-                    <a href="llantas.html"><button class="btn btn-warning">VER +</button></a>
-                </div>
-            </div>
-        </div>
-
         <h2 class="text-center my-4">Productos</h2>
 
         <div class="container d-flex gap-5 justify-content-center flex-wrap">
