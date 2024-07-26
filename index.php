@@ -20,7 +20,7 @@ $router->post( '/login', [AuthController::class, 'login'] );
 $router->get( '/register', [AuthController::class, 'register'] );
 $router->post( '/register', [AuthController::class, 'register'] );
 $router->get( '/close-session', [AuthController::class, 'closeSession'] );
-$router->get( '/products', [AuthController::class, 'products'] );
+$router->get( '/products', [ProductosController::class, 'products'] );
 
 
 
