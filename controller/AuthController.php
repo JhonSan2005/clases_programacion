@@ -54,7 +54,7 @@ class AuthController {
 
         $alertas = $alertas::obtenerAlertas();
 
-        $router->render('login', [
+        $router->render('auth/login', [
             "title" => "Iniciar Sesion",
             "alertas" => $alertas
         ]);
@@ -122,13 +122,13 @@ class AuthController {
         $alertas = $alertas->obtenerAlertas();
 
 
-        $router->render('register', [
+        $router->render('auth/register', [
             "title" => "Registrarse",
             "alertas" => $alertas
         ]);
 
     }
-
+    
     public static function closeSession() {
 
         if( !isAuth() ) {

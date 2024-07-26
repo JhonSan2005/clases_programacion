@@ -8,7 +8,7 @@ class HomeController {
     public static function index(Router $router)
     {
         
-        $productos = Producto::mostrarproductos();
+        $productos = Producto::mostrarproductos(4);
 
         $router->render('home', [
             "title" => "Home",

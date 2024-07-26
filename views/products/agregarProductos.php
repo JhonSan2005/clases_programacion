@@ -1,10 +1,3 @@
-<?php
-$seccion8 = "SubirProductos";
-?>
-
-<head>
-    <title> <?php echo "$seccion8"; ?></title>
-</head>
 <div class="container-fluid min-vh-100 d-flex flex-column">
     <div class="row justify-content-center">
         <div class="col-12 text-center my-3">

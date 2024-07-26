@@ -16,9 +16,14 @@ class Producto extends Conexion{
     }
 
 
-    public static function mostrarproductos() {
+    public static function mostrarproductos( int $limit = 0 ) {
         $conexion = self::conectar();
         $consulta = "SELECT * from productos";
+        if( $limit && $limit > 0 ) {
+            $consulta .= " Limit $limit";
+        }
+        $consulta .= ";";
+
         $resultado = $conexion->query($consulta)->fetch_all(MYSQLI_ASSOC);
 
         if (!$resultado) return false;
