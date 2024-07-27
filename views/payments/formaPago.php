@@ -1,10 +1,3 @@
-<?php
-$seccion11 = "Formualrio de pago";
-?>
-
-<head>
-    <title> <?php echo "$seccion11"; ?></title>
-</head>
 <div class="container-fluid min-vh-100 d-flex flex-column">
         <div class="row justify-content-center">
             <div class="col-12 text-center my-3">

@@ -24,7 +24,7 @@
                     <p class="text-body-secondary">Es fácil y rápido</p>
                 </div>
 
-                <?php include_once __DIR__ . "/../views/includes/alertaTemplate.php"; ?>
+                <?php include_once __DIR__ . "/../../views/includes/alertaTemplate.php"; ?>
 
                 <form action="/register" method="POST">
                     <div class="input-group mb-2">

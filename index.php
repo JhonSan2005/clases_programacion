@@ -7,12 +7,10 @@ require_once './controller/AuthController.php';
 
 $router = new Router;
 
-// echo "<pre>";
-// var_dump($router->verifyRoutes());
-// echo "</pre>";
 
+// Acceso Publico
 $router->get( '/', [HomeController::class, 'index'] );
-$router->get( '/productos', [ProductosController::class, 'index'] );
+$router->get( '/products', [ProductosController::class, 'index'] );
 
 // Auth
 $router->get( '/login', [AuthController::class, 'login'] );

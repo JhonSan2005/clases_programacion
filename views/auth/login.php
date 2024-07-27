@@ -21,7 +21,7 @@
                     <p class="text-body-secondary">Estamos felices de tenerte de vuelta.</p>
                 </div>
 
-                <?php include_once __DIR__ . "/../views/includes/alertaTemplate.php"; ?>
+                <?php include_once __DIR__ . "/../../views/includes/alertaTemplate.php"; ?>
 
 
                 <form action="/login" method="POST">
@@ -40,10 +40,10 @@
 
                 <div class="d-flex flex-column mt-3">
                     <div class="col-12 text-center">
-                        <small>¿No tienes cuenta? <a href="controlador.php?seccion=seccion3" style="color: #FF0000;">Registrarse</a></small>
+                        <small>¿No tienes cuenta? <a href="/register" style="color: #FF0000;">Registrarse</a></small>
                     </div>
                     <div class="col-12 text-center mt-2">
-                        <small>¿Olvidaste tu contraseña? <a href="controlador.php?seccion=seccion5" style="color: #FF0000;">Recuperar</a></small>
+                        <small>¿Olvidaste tu contraseña? <a href="/forgot-password" style="color: #FF0000;">Recuperar</a></small>
                     </div>
                 </div>
 
