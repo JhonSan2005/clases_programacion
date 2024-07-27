@@ -2,7 +2,7 @@
 
 require_once __DIR__ . '/../config/Conexion_db.php';
 
-class Producto extends Conexion{
+class Product extends Conexion{
    
     
 
@@ -29,6 +29,27 @@ class Producto extends Conexion{
         if (!$resultado) return false;
 
         return $resultado;
+    }
+
+    public static function buscarProducto( $campo, $datoABuscar ) {
+        $conexion = Conexion::conectar();
+        $consulta = "SELECT * FROM `productos` WHERE `$campo` = '$datoABuscar'";
+        $resultado = $conexion->query($consulta)->fetch_all(MYSQLI_ASSOC);
+
+        if (!$resultado) return false;
+
+        return $resultado;
+    }
+
+    public static function buscarPorParametro( string $parametroABuscar ) {
+        $conexion = Conexion::conectar();
+        $consulta = "SELECT * FROM `productos` WHERE `nombre_producto` LIKE '%$parametroABuscar%'";
+        $resultado = $conexion->query($consulta)->fetch_all(MYSQLI_ASSOC);
+
+        if( !$resultado ) return false;
+
+        return $resultado;
+
     }
 
 }
