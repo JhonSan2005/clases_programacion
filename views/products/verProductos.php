@@ -1,5 +1,7 @@
+<h2 class="text-body-secondary text-center my-4 text-uppercase fw-medium">Productos</h2>
+
 <div class="container d-flex gap-5 justify-content-center flex-wrap">
-            
+
     <?php if( isset($productos) && $productos ): ?>
         <?php foreach( $productos as $producto ): ?>
             <div class="card card--product border">

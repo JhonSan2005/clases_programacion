@@ -24,10 +24,20 @@
             </div>
         </div>
 
-        <h2 class="text-center my-4">Productos</h2>
+
+        <div class="d-flex flex-column flex-md-row justify-content-md-between my-4">
+            <h2>Ultimos Productos Agregados</h2>
+
+            <?php if(isset($productos) && $productos): ?>
+                <div class="d-flex justify-content-md-end align-items-center">
+                    <p style="margin-right: 45px;"><a class="text-end" href="/products">Ver Mas...</a></p>
+                </div>
+            <?php endif; ?>
+
+        </div>
+
 
         <div class="container d-flex gap-5 justify-content-center flex-wrap">
-            
             <?php if( isset($productos) && $productos ): ?>
                 <?php foreach( $productos as $producto ): ?>
                     <div class="card card--product border">
@@ -42,7 +52,6 @@
             <?php else: ?>
                 <p class="alert alert-light" role="alert">No hay datos para mostrar</p>
             <?php endif; ?>
-
         </div>
 
     </div>
