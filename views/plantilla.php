@@ -19,5 +19,15 @@
 
     <?php include_once __DIR__ . '../includes/footer.php'; ?>
 
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-RN2W1P2L8D"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-RN2W1P2L8D');
+    </script>
+
 </body>
 </html>
