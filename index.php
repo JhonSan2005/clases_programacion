@@ -7,6 +7,7 @@ require_once './controller/CategoryController.php';
 require_once './controller/HomeController.php';
 require_once './controller/AuthController.php';
 require_once './controller/ProfileController.php';
+require_once './controller/DashboardController.php';
 
 $router = new Router;
 
@@ -26,6 +27,13 @@ $router->get( '/close-session', [AuthController::class, 'closeSession'] );
 
 // Acceso Privado
 $router->get('/profile', [ProfileController::class, 'index']);
+
+// Solo Administrador
+$router->get('/admin/dashboard', [DashboardController::class, 'index']);
+$router->get('/admin/products', [DashboardController::class, 'index']);
+$router->get('/admin/categories', [DashboardController::class, 'index']);
+$router->get('/admin/orders', [DashboardController::class, 'index']);
+$router->get('/admin/profile', [ProfileController::class, 'index']);
 
 $router->verifyRoutes();
 ?>

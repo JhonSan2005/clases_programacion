@@ -46,15 +46,13 @@ class Router {
         $contenido = ob_get_clean(); // Limpia el Buffer
 
         // Utilizar el layout de acuerdo a la URL
-        // $current_url = $_SERVER['PATH_INFO'] ?? '/';
+        $current_url = $_SERVER['PATH_INFO'] ?? '/';
 
-        include_once __DIR__ . '/views/plantilla.php';
-
-        // if( str_contains( $current_url, '/admin' ) ) {
-        //     // include_once __DIR__ . '/views/admin-layout.php';
-        // }else {
-        //     include_once __DIR__ . '/views/plantilla.php';
-        // }
+        if( str_contains( $current_url, '/admin' ) ) {
+            include_once __DIR__ . '/views/plantilla_admin.php';
+        }else {
+            include_once __DIR__ . '/views/plantilla.php';
+        }
     }
 
 }
