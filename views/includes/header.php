@@ -28,6 +28,7 @@
           <a class="nav-link link-light fw-medium" href="/register">Registrarse</a>
         </li>
 
+
         <?php else: ?>
           <li class="nav-item">
             <a class="nav-link link-light fw-medium" href="/login">Dashboard</a>
@@ -58,8 +59,8 @@
 
 
 
-      <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
+      <form class="d-flex" role="search" action="/search">
+        <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search" name="q">
         <button class="btn btn-primary" type="submit">Buscar</button>
       </form>
     </div>

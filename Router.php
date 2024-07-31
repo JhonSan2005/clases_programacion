@@ -1,63 +1,58 @@
 <?php
 
 class Router {
-
+    // Arrays para almacenar las rutas GET y POST
     public array $getRoutes = [];
     public array $postRoutes = [];
-
-
-    public function get( $path, $fn ) {
+    // Método para registrar una ruta GET
+    public function get($path, $fn) {
+        // Almacena la función asociada a la ruta GET en el array $getRoutes
         $this->getRoutes[$path] = $fn;
     }
-
-    public function post( $path, $fn ) {
+    // Método para registrar una ruta POST
+    public function post($path, $fn) {
+        // Almacena la función asociada a la ruta POST en el array $postRoutes
         $this->postRoutes[$path] = $fn;
     }
- 
+    // Método para verificar las rutas y ejecutar la función correspondiente
     public function verifyRoutes() {
-
+        // Obtiene la URL actual
         $current_url = $_SERVER['PATH_INFO'] ?? '/';
+
+        // Obtiene el método de la petición (GET o POST)
         $method = $_SERVER['REQUEST_METHOD'];
 
-        if( $method == 'GET' ) {
+        // Determina la función (callback) que se debe ejecutar según el método
+        if ($method == 'GET') {
+            // Busca la función asociada a la ruta en el array $getRoutes
             $fn = $this->getRoutes[$current_url] ?? null;
         } else {
+            // Busca la función asociada a la ruta en el array $postRoutes
             $fn = $this->postRoutes[$current_url] ?? null;
         }
-
-        if( $fn ) {
+        // Si existe una función para la ruta, la ejecuta
+        if ($fn) {
             call_user_func($fn, $this);
         } else {
+            // Si no existe la ruta, redirige a una página 404
             header('Location: /404');
         }
-
     }
-
-    public function render($view, $datos = [])
-    {
+    // Método para renderizar una vista
+    public function render($view, $datos = []) {
+        // Extrae los datos del array asociativo a variables individuales
         foreach ($datos as $key => $value) {
-            $$key = $value; 
+            $$key = $value;
         }
-
-        ob_start(); 
-
+        // Inicia el almacenamiento en el buffer de salida
+        ob_start();
+        // Incluye la vista especificada
         include_once __DIR__ . "/views/$view.php";
-
-        $contenido = ob_get_clean(); // Limpia el Buffer
-
-        // Utilizar el layout de acuerdo a la URL
-        // $current_url = $_SERVER['PATH_INFO'] ?? '/';
-
+        // Guarda el contenido del buffer y limpia el buffer
+        $contenido = ob_get_clean();
+        // Incluye la plantilla principal
         include_once __DIR__ . '/views/plantilla.php';
-
-        // if( str_contains( $current_url, '/admin' ) ) {
-        //     // include_once __DIR__ . '/views/admin-layout.php';
-        // }else {
-        //     include_once __DIR__ . '/views/plantilla.php';
-        // }
     }
-
 }
-
 
 ?>
