@@ -38,9 +38,6 @@
             <a class="nav-link link-light fw-medium" href="/products">Productos</a>
           </li>
 
-          <li class="nav-item">
-            <a class="nav-link link-light fw-medium" href="/categories">Categorias</a>
-          </li>
 
           <li class="nav-item dropdown">
           <a class="nav-link link-light fw-medium dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">

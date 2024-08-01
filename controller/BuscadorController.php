@@ -25,3 +25,7 @@ class BuscadorController {
 }
 
 ?>
+
+
+
+// si no hay parametro a buscar me traiga todos los productos

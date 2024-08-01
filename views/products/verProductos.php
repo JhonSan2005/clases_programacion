@@ -1,3 +1,12 @@
+<div class="wrap">
+    <h2> Opciones</h2>
+        <div class="store-wrapper">
+            <div class="category_list">
+                <a href="..../controller/CategoryController" class="category_item" category="all">Todo</a>
+                <a href="#" class="category_item" category="1">Aceites</a>
+                <a href="#" class="category_item" category="2">Repuestos</a>
+                <a href="#" class="category_item" category="3">Llantas</a>
+            </div>
 <h2 class="text-body-secondary text-center my-4 text-uppercase fw-medium">Productos</h2>
 
 <div class="container d-flex gap-5 justify-content-center flex-wrap">
