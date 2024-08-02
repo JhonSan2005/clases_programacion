@@ -43,3 +43,73 @@ footer {
     bottom: 0;
     margin-bottom: 0;
 }
+.custom-container {
+    max-width: 530px; /* Ajusta el ancho máximo según tus necesidades */
+}
+
+/* Estilo para las cartas de producto */
+.card--product {
+    width: 18rem;
+    margin: 1rem;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    animation: rotateCard 5s infinite linear;
+}
+
+/* Animación de rotación */
+@keyframes rotateCard {
+    from {
+        transform: rotateY(0deg);
+    }
+    to {
+        transform: rotateY(0deg);
+    }
+}
+
+/* Estilo para la imagen dentro de las cartas */
+.card--product .card-img-top {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+/* Estilo para el cuerpo de la carta */
+.card--product .card-body {
+    padding: 15px;
+    text-align: center;
+}
+
+/* Estilo para el título de la carta */
+.card--product .card-title {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+    font-weight: 500;
+}
+
+/* Estilo para el texto de la carta */
+.card--product .card-text {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+}
+
+/* Estilo para el botón de agregar al carrito */
+.btn.add-to-cart {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.btn.add-to-cart:hover {
+    background-color: #0056b3;
+}
+
+.btn.add-to-cart i {
+    margin-right: 5px;
+}

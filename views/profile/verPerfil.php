@@ -1,36 +1,23 @@
-<div class="container d-flex justify-content-center mt-5">
-
-    <div class="d-flex gap-5 flex-column flex-md-row bg-white shadow p-4">
-
-        <div class="flex-1 d-flex justidy-content-center align-items-center">
-            <div>
-                <img class="img-thumbnail" src="/img/no_image.jpg" alt="Imagen Perfil" style="width: 250px; height: 250px;">
+<div class="container d-flex flex-column justify-content-center mt-5 custom-container">
+            <div class="bg-white shadow p-4">
+                <div class="text-center mb-4">
+                    <img class="img-thumbnail" src="/img/no_image.jpg" alt="Imagen Perfil" style="width: 250px; height: 250px;">
+                </div>
+                <form action="update-profile.php" method="post" enctype="multipart/form-data">
+                    <div class="mb-3">
+                        <label class="form-label fw-medium text-body-secondary">C.C.</label>
+                        <input type="text" class="form-control text-black-30" name="documento" value="<?php echo htmlspecialchars($profile['documento']); ?>" readonly>
+                    </div>
+                    <div class="mb-3">
+                        <label for="lastname" class="form-label fw-medium text-body-secondary">Apellidos</label>
+                        <input type="text" class="form-control text-black-30" name="nombre" value="<?php echo htmlspecialchars($profile['nombre']); ?>">
+                    </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label fw-medium text-body-secondary">Correo</label>
+                        <input type="email" class="form-control text-black-30" name="correo" value="<?php echo htmlspecialchars($profile['correo']); ?>">
+                    </div>
+                    
+                    <button type="submit" class="btn btn-warning w-100">Guardar Cambios</button>
+                </form>
             </div>
         </div>
-        
-        <div class="flex-1 d-flex flex-column">
-
-            <div class="mb-3">
-                <label class="form-label fw-medium text-body-secondary">C.C.</label>
-                <input type="text" class="form-control text-black-50" placeholder="N/A" value="<?php echo $profile['documento'] ?? ''; ?>" disabled>
-            </div>
-            
-            <div class="mb-3">
-                <label for="formGroupExampleInput2" class="form-label fw-medium text-body-secondary">Apellidos</label>
-                <input type="text" class="form-control text-black-50" placeholder="N/A" value="<?php echo $profile['nombre'] ?? ''; ?>" disabled>
-            </div>
-
-            <div class="mb-3">
-                <label for="formGroupExampleInput2" class="form-label fw-medium text-body-secondary">Correo</label>
-                <input type="text" class="form-control text-black-50" placeholder="N/A" value="<?php echo $profile['correo'] ?? ''; ?>" disabled>
-            </div>
-
-            <div class="mb-3 w-100">
-                <a href="/edit-profile" class="btn btn-warning w-100">Editar</a>
-            </div>
-
-
-        </div>
-    </div>
-
-</div>
