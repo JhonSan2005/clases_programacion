@@ -37,7 +37,6 @@
 
                     <button type="submit" class="btn btn-lg btn-danger w-100 fs-6" style="background-color: #FF0000;">Iniciar</button>
                 </form>
-             
 
                 <div class="d-flex flex-column mt-3">
                     <div class="col-12 text-center">
