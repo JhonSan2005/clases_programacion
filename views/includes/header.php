@@ -29,7 +29,6 @@
         </li>
 
         <?php else: ?>
-
           <li class="nav-item">
             <a class="nav-link link-light fw-medium" href="/products">Productos</a>
           </li>
@@ -51,9 +50,12 @@
           </ul>
         </li>
         <?php endif; ?>
-
+ 
+    
       </ul>
-
+      <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling">
+  <i class="fas fa-shopping-cart"></i> 
+</button>
 
 
       <form class="d-flex" role="search" action="/search">

@@ -53,6 +53,7 @@ class Router {
         }else {
             include_once __DIR__ . '/views/plantilla.php';
         }
+
     }
 
 }
