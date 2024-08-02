@@ -14,28 +14,19 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link link-light fw-medium" aria-current="page" href="/">Inicio</a>
-        </li>
 
-        <?php if( !$session_activa ): ?>
-
-        <li class="nav-item">
-          <a class="nav-link link-light fw-medium" href="/login">Iniciar Sesion</a>
-        </li>
-
-        <li class="nav-item">
-          <a class="nav-link link-light fw-medium" href="/register">Registrarse</a>
-        </li>
-
-        <?php else: ?>
+        <?php if( $session_activa ): ?>
 
           <li class="nav-item">
-            <a class="nav-link link-light fw-medium" href="/products">Productos</a>
+            <a class="nav-link link-light fw-medium" href="/admin/dashboard">Dashboard</a>
           </li>
 
           <li class="nav-item">
-            <a class="nav-link link-light fw-medium" href="/categories">Categorias</a>
+            <a class="nav-link link-light fw-medium" href="/admin/products">Productos</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link link-light fw-medium" href="/admin/categories">Categorias</a>
           </li>
 
           <li class="nav-item dropdown">
@@ -43,9 +34,9 @@
             Opciones
           </a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="/admin/dashboard">Dashboard</a></li>
-            <li><a class="dropdown-item" href="/profile">Perfil</a></li>
-            <li><a class="dropdown-item" href="/shopping-cart">Carrito de Compras</a></li>
+            <li><a class="dropdown-item" href="/">Vista Usuarios</a></li>
+            <li><a class="dropdown-item" href="/admin/profile">Perfil</a></li>
+            <li><a class="dropdown-item" href="/admin/orders">Pedidos</a></li>
             <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item" href="/close-session">Cerrar Sesion</a></li>
           </ul>
@@ -53,13 +44,6 @@
         <?php endif; ?>
 
       </ul>
-
-
-
-      <form class="d-flex" role="search" action="/search">
-        <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search" name="q">
-        <button class="btn btn-primary" type="submit">Buscar</button>
-      </form>
     </div>
   </div>
 </nav>
