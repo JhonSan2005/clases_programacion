@@ -33,10 +33,7 @@
             <a class="nav-link link-light fw-medium" href="/products">Productos</a>
           </li>
 
-          <li class="nav-item">
-            <a class="nav-link link-light fw-medium" href="/categories">Categorias</a>
-          </li>
-
+        
           <li class="nav-item dropdown">
           <a class="nav-link link-light fw-medium dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Opciones
@@ -53,11 +50,11 @@
  
     
       </ul>
+    
+
       <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling">
   <i class="fas fa-shopping-cart"></i> 
 </button>
-
-
       <form class="d-flex" role="search" action="/search">
         <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search" name="q">
         <button class="btn btn-primary" type="submit">Buscar</button>

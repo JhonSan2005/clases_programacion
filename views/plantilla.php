@@ -13,6 +13,7 @@
 
     <?php include_once __DIR__ . '../includes/header.php'; ?>
 
+
     <main class="container main-content">
         <?php echo $contenido; ?>
     </main>
@@ -25,11 +26,10 @@
         </div>
         <div class="offcanvas-body">
             <ul id="cart-items" class="list-group mb-3"></ul>
-            <div class="d-flex justify-content-between mb-3">
-                <h5>Total:</h5>
-                <h5 id="cart-total">$0.00</h5>
-            </div>
-            <a href="compra.php" class="btn btn-success w-100" id="checkout-btn">Continuar Compra</a>
+           <div id="cart-total">Total: $0.00</div>
+<ul id="cart-items" class="list-group"></ul>
+
+            <a href="#" class="btn btn-success w-100" id="checkout-btn">Continuar Compra</a>
         </div>
     </div>
 

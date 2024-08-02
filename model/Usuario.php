@@ -35,7 +35,16 @@ class Usuario extends Conexion{
         return $consulta;
     }
 
+
+
+
 }
+
+
+
+
+    
+?>
 
 
 

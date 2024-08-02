@@ -12,7 +12,15 @@ class Category extends Conexion {
         $resulado = $conexion->query($query)->fetch_all(MYSQLI_ASSOC);
         return $resulado;
     }
-
+    public static function buscarPorCategoria($id_categoria) {
+        $conexion = Conexion::conectar();
+        $query = "SELECT * FROM `productos` WHERE `id_categoria` = $id_categoria;";
+        $resultado = $conexion->query($query)->fetch_all(MYSQLI_ASSOC);
+        return $resultado;
+    }
 }
+
+
+
 
 ?>

@@ -35,5 +35,8 @@ $router->get('/admin/categories', [DashboardController::class, 'index']);
 $router->get('/admin/orders', [DashboardController::class, 'index']);
 $router->get('/admin/profile', [ProfileController::class, 'index']);
 
+//
+
+
 $router->verifyRoutes();
 ?>
