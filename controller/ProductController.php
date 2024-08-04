@@ -50,7 +50,7 @@ class ProductController {
             $alertas->crearAlerta( !$stock, 'danger', 'El stock no puede ir Vacio' );
             $alertas->crearAlerta( !$id_categoria, 'danger', 'La categoria no puede ir Vacio' );
             $alertas->crearAlerta( !$descripcion, 'danger', 'La descripcion no puede ir Vacio' );
-            $alertas->crearAlerta( !$imagen_url, 'danger', 'La imagen no puede ir Vacio' );
+            $alertas->crearAlerta( !$imagen_url, 'danger', 'La imagen no puede ir Vacia' );
             
             // Validamos que no hayan Alertas
             if( !$alertas->obtenerAlertas() ) {
