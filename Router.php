@@ -38,20 +38,27 @@ class Router {
             header('Location: /404');
         }
     }
-    // Método para renderizar una vista
-    public function render($view, $datos = []) {
-        // Extrae los datos del array asociativo a variables individuales
+    public function render($view, $datos = [])
+    {
         foreach ($datos as $key => $value) {
-            $$key = $value;
+            $$key = $value; 
         }
-        // Inicia el almacenamiento en el buffer de salida
-        ob_start();
-        // Incluye la vista especificada
+
+        ob_start(); 
+
         include_once __DIR__ . "/views/$view.php";
-        // Guarda el contenido del buffer y limpia el buffer
-        $contenido = ob_get_clean();
-        // Incluye la plantilla principal
-        include_once __DIR__ . '/views/plantilla.php';
+
+        $contenido = ob_get_clean(); // Limpia el Buffer
+
+        // Utilizar el layout de acuerdo a la URL
+        $current_url = $_SERVER['PATH_INFO'] ?? '/';
+
+        if( str_contains( $current_url, '/admin' ) ) {
+            include_once __DIR__ . '/views/plantilla_admin.php';
+        }else {
+            include_once __DIR__ . '/views/plantilla.php';
+        }
+
     }
 }
 

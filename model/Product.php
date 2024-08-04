@@ -6,15 +6,14 @@ class Product extends Conexion{
    
     
 
-    public static function agregarproductos($id_producto, $nombre_producto, $precio, $impuesto, $stock, $id_categoria, $descripcion, $imagen_url) {
+    public static function agregarproductos($nombre_producto, $precio, $impuesto, $stock, $id_categoria, $descripcion, $imagen_url) {
         $conexion = self::conectar();
-        $consulta = $conexion->prepare("INSERT INTO productos (id_producto, nombre_producto, precio, impuesto, stock, id_categoria, descripcion, imagen_url) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
-        $consulta->bind_param('ssddisss', $id_producto, $nombre_producto, $precio, $impuesto, $stock, $id_categoria, $descripcion, $imagen_url);
+        $consulta = $conexion->prepare("INSERT INTO productos (nombre_producto, precio, impuesto, stock, id_categoria, descripcion, imagen_url) VALUES (?, ?, ?, ?, ?, ?, ?)");
+        $consulta->bind_param('ssddiss', $nombre_producto, $precio, $impuesto, $stock, $id_categoria, $descripcion, $imagen_url);
         $resultado = $consulta->execute();
 
         return $resultado;
     }
-
 
 
     public static function mostrarproductos( int $limit = 0 ) {
@@ -52,6 +51,15 @@ class Product extends Conexion{
         return $resultado;
 
     }
+    public static function actualizarProducto($id_producto, $nombre_producto, $precio, $impuesto, $stock, $id_categoria, $descripcion, $imagen_url) {
+        $conexion = self::conectar();
+        $consulta = $conexion->prepare("UPDATE productos SET nombre_producto = ?, precio = ?, impuesto = ?, stock = ?, id_categoria = ?, descripcion = ?, imagen_url = ? WHERE id_producto = ?");
+        $consulta->bind_param('ssddissi', $nombre_producto, $precio, $impuesto, $stock, $id_categoria, $descripcion, $imagen_url, $id_producto);
+        $resultado = $consulta->execute();
+    
+        return $resultado;
+    }
+    
     
 
 }

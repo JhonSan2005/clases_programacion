@@ -30,7 +30,7 @@
 
         <?php else: ?>
           <li class="nav-item">
-            <a class="nav-link link-light fw-medium" href="/login">Dashboard</a>
+            <a class="nav-link link-light fw-medium" href="/dashboard">Dashboard</a>
           </li>
 
           <li class="nav-item">
@@ -40,6 +40,20 @@
           <li class="nav-item">
             <a class="nav-link link-light fw-medium" href="/agregarProductos">AgregarProductos</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link link-light fw-medium" href="/agregarProductos">Actualizarperfil</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link link-light fw-medium" href="/agregarProductos">registarcategoria</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link link-light fw-medium" href="/agregarProductos">Actualizarproduto</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link link-light fw-medium" href="/agregarProductos">eliminarproducto</a>
+          </li>
+
+
 
 
           <li class="nav-item dropdown">

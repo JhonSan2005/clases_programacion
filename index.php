@@ -13,6 +13,7 @@ require_once './controller/HomeController.php';
 require_once './controller/AuthController.php';
 require_once './controller/ProfileController.php';
 require_once './controller/RecoverController.php';
+require_once './controller/DashboardController.php';
 // require_once './controller/AddproductoController.php';
 
 // Crear una instancia del Router
@@ -35,6 +36,7 @@ $router->post('/recover', [RecoverController::class, 'recover']); // Manejo de r
 $router->get('/products', [ ProductController::class, 'index']); // Página de recuperar contraseña (GET)
 $router->get('/agregarProductos', [ ProductController::class, 'agregar']); // Manejo de recuperar contraseña(POST)
 $router->post('/agregarProductos', [ ProductController::class, 'agregar']); 
+$router->get('/dashboard', [ DashboardController::class, 'index']); // Manejo de recuperar contraseña(POST)
 $router->get('/close-session', [AuthController::class, 'closeSession']); // Cerrar sesión
 
 // Registrar rutas privadas (acceso restringido)
