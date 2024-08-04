@@ -19,13 +19,9 @@ class BuscadorController {
             "parametroABuscar" => $parametroABuscar,
             "resultadosBusqueda" => $resultados,
         ]);
-
+         
     }
 
 }
 
 ?>
-
-
-
-// si no hay parametro a buscar me traiga todos los productos

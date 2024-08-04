@@ -28,7 +28,6 @@
           <a class="nav-link link-light fw-medium" href="/register">Registrarse</a>
         </li>
 
-
         <?php else: ?>
           <li class="nav-item">
             <a class="nav-link link-light fw-medium" href="/login">Dashboard</a>
@@ -36,6 +35,10 @@
 
           <li class="nav-item">
             <a class="nav-link link-light fw-medium" href="/products">Productos</a>
+          </li>
+          
+          <li class="nav-item">
+            <a class="nav-link link-light fw-medium" href="/agregarProductos">AgregarProductos</a>
           </li>
 
 
@@ -45,7 +48,8 @@
           </a>
           <ul class="dropdown-menu">
             <li><a class="dropdown-item" href="/profile">Perfil</a></li>
-            <li><a class="dropdown-item" href="/shopping-cart">Carrito de Compras</a></li>
+            <li><a class="dropdown-item" href="/carrito">Carrito de Compras</a></li>
+            <li><a class="dropdown-item" href="/productreturns">Devoluciones</a></li>
             <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item" href="/close-session">Cerrar Sesion</a></li>
           </ul>

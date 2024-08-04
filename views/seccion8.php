@@ -1,10 +1,22 @@
+<?php
+$seccion8 = "SubirProductos";
+?>
 
+<head>
+    <title> <?php echo "$seccion8"; ?></title>
+</head>
+<div class="container-fluid min-vh-100 d-flex flex-column">
+    <div class="row justify-content-center">
+        <div class="col-12 text-center my-3">
+            <img src="../img/logol.png" alt="Logo" class="img-fluid" style="max-height: 180px; max-width: 300px;">
+        </div>
+    </div>
 
     <div class="container2">
     <h1 class="form-title">Agregar Productos</h1>
-    <?php include_once __DIR__ . "/../../views/includes/alertaTemplate.php"; ?>
     
-      <form action="/agregarProductos" method="POST">
+      <form action="../Controlador/C_agregar_productos.php" method="post" enctype="multipart/form-data">
+     <input type="hidden" name="action" value="agregar">
         <div class="form-group">
             <label for="id_producto" class="form-label">ID Producto</label>
             <input type="text" id="id_producto" name="id_producto" class="form-input" autocomplete="off" required>
@@ -29,9 +41,9 @@
                  <label for="id_categoria" class="form-label">Categoría</label>
                   <select id="id_categoria" name="id_categoria" class="form-input" required>
                      <option value="">Selecciona una categoría</option>
-                     <option value="1">Aceites</option>
-                     <option value="2">Repuestos</option>
-                     <option value="3">Llantas</option>
+                     <option value="1">Repuestos</option>
+                     <option value="2">Llantas</option>
+                     <option value="3">Aceites</option>
     </select>
 </div>
         <div class="form-group">
