@@ -1,5 +1,5 @@
 <!-- Footer -->
-<footer class="bg-light text-dark pt-5 pb-4">
+<footer class="bg-danger text-white pt-5 pb-4">
     <div class="container">
         <div class="row">
             <!-- Información de la empresa -->
@@ -40,31 +40,3 @@
         </div>
     </div>
 </footer>
-
-<!-- Agrega este enlace a FontAwesome en tu <head> -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-
-<!-- Agrega este CSS para estilos adicionales -->
-<style>
-    footer {
-        background: #ffffff;
-        color: #333333;
-    }
-    footer h5 {
-        font-size: 1.25rem;
-        font-weight: bold;
-    }
-    footer a {
-        text-decoration: none;
-        transition: color 0.3s;
-    }
-    footer a:hover {
-        color: #007bff;
-    }
-    .social-icons i {
-        transition: color 0.3s;
-    }
-    .social-icons i:hover {
-        color: #007bff;
-    }
-</style>
