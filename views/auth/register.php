@@ -1,4 +1,4 @@
-    <!----------------------- Contenedor base -------------------------->
+<!----------------------- Contenedor base -------------------------->
 <div class="container min-h-100 d-flex justify-content-center align-items-center">
 
     <!----------------------- Contenedor principal -------------------------->
@@ -50,10 +50,14 @@
                             </label>
                         </div>
                     </div>
-                    <!-- Resto del formulario -->
+                    <!-- reCAPTCHA widget -->
+                    <div class="g-recaptcha" data-sitekey="6LfaIgwqAAAAAFjrowWPA5vbDBONVvx83AP2Iv9S"></div>
                     <button type="submit" class="btn btn-lg btn-danger w-100 fs-6" style="background-color: #FF0000;">Registrarse</button>
                 </form>
             </div>
         </div>
     </div>
 </div>
+
+<!-- Agregar el script de reCAPTCHA -->
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>

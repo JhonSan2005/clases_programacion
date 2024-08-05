@@ -10,6 +10,8 @@ class BuscadorController {
 
         $parametroABuscar = filter_var($_GET['q'] ?? '', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
+        $parametroABuscar = trim($parametroABuscar);
+        
         if( !$parametroABuscar ) header("Location: /");
 
         $resultados = Product::buscarPorParametro($parametroABuscar);
@@ -19,7 +21,7 @@ class BuscadorController {
             "parametroABuscar" => $parametroABuscar,
             "resultadosBusqueda" => $resultados,
         ]);
-         
+
     }
 
 }

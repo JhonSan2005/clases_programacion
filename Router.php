@@ -48,11 +48,21 @@ class Router {
         ob_start();
         // Incluye la vista especificada
         include_once __DIR__ . "/views/$view.php";
-        // Guarda el contenido del buffer y limpia el buffer
-        $contenido = ob_get_clean();
-        // Incluye la plantilla principal
-        include_once __DIR__ . '/views/plantilla.php';
+
+        $contenido = ob_get_clean(); // Limpia el Buffer
+
+        // Utilizar el layout de acuerdo a la URL
+        $current_url = $_SERVER['PATH_INFO'] ?? '/';
+
+        if( str_contains( $current_url, '/admin' ) ) {
+            include_once __DIR__ . '/views/plantilla_admin.php';
+        }else {
+            include_once __DIR__ . '/views/plantilla.php';
+        }
+
     }
+
 }
+
 
 ?>

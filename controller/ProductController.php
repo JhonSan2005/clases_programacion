@@ -105,4 +105,19 @@ class ProductController
             "categorias" => $categorias
         ]);
     }
+
+    public static function verProductosAdmin( Router $router ) {
+
+        $isAuth = isAuth();
+
+        if(!$isAuth) return header("Location: /404");
+
+        $productos = Product::mostrarproductos();
+
+        $router->render("products/verProductosAdmin", [
+            "title" => "Administrar Productos",
+            "productos" => $productos
+        ]);
+    }
+
 }
