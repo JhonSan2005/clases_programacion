@@ -13,10 +13,10 @@
             <div class="col-md-4 mb-3 mb-md-0 text-center text-md-start">
                 <h5 class="text-uppercase mb-3">Enlaces Rápidos</h5>
                 <ul class="list-unstyled mb-0">
-                    <li><a href="/about" class="text-dark d-block">Sobre Nosotros</a></li>
-                    <li><a href="/products" class="text-dark d-block">Productos</a></li>
-                    <li><a href="/contact" class="text-dark d-block">Contacto</a></li>
-                    <li><a href="/faq" class="text-dark d-block">Preguntas Frecuentes</a></li>
+                    <li><a href="/about" class="text-light d-block">Sobre Nosotros</a></li>
+                    <li><a href="/products" class="text-light d-block">Productos</a></li>
+                    <li><a href="/contact" class="text-light d-block">Contacto</a></li>
+                    <li><a href="/faq" class="text-light d-block">Preguntas Frecuentes</a></li>
                 </ul>
             </div>
 
@@ -26,13 +26,13 @@
                 <p>Email: contacto@repuestosjj.com</p>
                 <p>Teléfono: +123 456 7890</p>
                 <div class="social-icons">
-                    <a href="https://facebook.com" target="_blank" class="text-dark me-3" aria-label="Facebook">
+                    <a href="https://facebook.com" target="_blank" class="text-light me-3" aria-label="Facebook">
                         <i class="fab fa-facebook-f fa-2x"></i>
                     </a>
-                    <a href="https://twitter.com" target="_blank" class="text-dark me-3" aria-label="Twitter">
+                    <a href="https://twitter.com" target="_blank" class="text-light me-3" aria-label="Twitter">
                         <i class="fab fa-twitter fa-2x"></i>
                     </a>
-                    <a href="https://instagram.com" target="_blank" class="text-dark" aria-label="Instagram">
+                    <a href="https://instagram.com" target="_blank" class="text-light" aria-label="Instagram">
                         <i class="fab fa-instagram fa-2x"></i>
                     </a>
                 </div>

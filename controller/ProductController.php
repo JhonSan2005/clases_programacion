@@ -1,9 +1,10 @@
 <?php
 
 require_once __DIR__ . "/../Router.php";
+require_once __DIR__ . "/../helpers/functions.php";
+require_once __DIR__ . '/../model/ProductCategory.php';
 require_once __DIR__ . "/../model/Product.php";
 require_once __DIR__ . "/../model/Category.php";
-require_once __DIR__ . "/../helpers/functions.php";
 
 class ProductController
 {
@@ -112,7 +113,7 @@ class ProductController
 
         if(!$isAuth) return header("Location: /404");
 
-        $productos = Product::mostrarproductos();
+        $productos = ProductCategory::mostrarProductosCategorias();
 
         $router->render("products/verProductosAdmin", [
             "title" => "Administrar Productos",
@@ -121,3 +122,5 @@ class ProductController
     }
 
 }
+
+?>

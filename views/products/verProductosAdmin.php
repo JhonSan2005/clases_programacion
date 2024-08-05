@@ -15,18 +15,20 @@
             <thead>
                 <tr>
                     <th scope="col">Nombre</th>
+                    <th scope="col">Categoria</th>
                     <th scope="col">Precio</th>
                     <th scope="col">Impuesto</th>
                     <th scope="col">Cantidad en Bodega</th>
                     <th scope="col">Descripcion</th>
                     <th scope="col">imagen</th>
-                    <th scope="col-2">opciones</th>
+                    <th scope="col">opciones</th>
                 </tr>
             </thead>
             <tbody>
                 <?php foreach($productos as $producto): ?>
                 <tr>
                     <th><?php echo $producto['nombre_producto']; ?></th>
+                    <th><?php echo $producto['nombre_categoria']; ?></th>
                     <td><?php echo $producto['precio']; ?></td>
                     <td><?php echo $producto['impuesto']; ?></td>
                     <td><?php echo $producto['stock']; ?></td>

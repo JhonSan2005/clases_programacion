@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
@@ -28,14 +28,15 @@
         </div>
         <div class="offcanvas-body">
             <ul id="cart-items" class="list-group mb-3"></ul>
-           <div id="cart-total">Total: $0.00</div>
-<ul id="cart-items" class="list-group"></ul>
+            <div id="cart-total">Total: $0.00</div>
+            <ul id="cart-items" class="list-group"></ul>
 
             <a href="#" class="btn btn-success w-100" id="checkout-btn">Continuar Compra</a>
         </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Script JavaScript -->
     <script src="js/main.js"></script>
 
     <?php include_once __DIR__ . '../includes/footer.php'; ?>
@@ -45,7 +46,10 @@
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-RN2W1P2L8D"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
         gtag('js', new Date());
         gtag('config', 'G-RN2W1P2L8D');
     </script>
