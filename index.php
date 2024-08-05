@@ -14,6 +14,8 @@ require_once './controller/AuthController.php';
 require_once './controller/ProfileController.php';
 require_once './controller/RecoverController.php';
 require_once './controller/DashboardController.php';
+require_once './controller/CategoryController.php';
+
 
 // Crear una instancia del Router
 $router = new Router;
@@ -22,16 +24,16 @@ $router = new Router;
 $router->get('/', [HomeController::class, 'index']); // Página de inicio
 $router->get('/products', [ProductController::class, 'index']); // Página de productos
 $router->get('/search', [BuscadorController::class, 'buscar']); // Página de búsqueda
-$router->get('/category', [ProductController::class, 'category']); // Página de registro (GET)
+$router->get('/category', [ProductController::class, 'category']); 
 
 
 // Rutas de autenticación
-$router->get('/login', [AuthController::class, 'login']); // Página de login (GET)
-$router->post('/login', [AuthController::class, 'login']); // Manejo de login (POST)
-$router->get('/register', [AuthController::class, 'register']); // Página de registro (GET)
-$router->post('/register', [AuthController::class, 'register']); // Manejo de registro (POST)
-$router->get('/recover', [RecoverController::class, 'recover']); // Página de recuperar contraseña (GET)
-$router->post('/recover', [RecoverController::class, 'recover']); // Manejo de recuperar contraseña(POST)
+$router->get('/login', [AuthController::class, 'login']); 
+$router->post('/login', [AuthController::class, 'login']); 
+$router->get('/register', [AuthController::class, 'register']); 
+$router->post('/register', [AuthController::class, 'register']); 
+$router->get('/recover', [RecoverController::class, 'recover']); 
+$router->post('/recover', [RecoverController::class, 'recover']); 
 $router->get('/close-session', [AuthController::class, 'closeSession']); // Cerrar sesión
 
 // Registrar rutas privadas (acceso restringido)
@@ -42,11 +44,15 @@ $router->post('/profile', [ProfileController::class, 'actualizar']); // Manejo d
 $router->get('/admin/dashboard', [DashboardController::class, 'index']);
 $router->get('/admin/products', [ProductController::class, 'verProductosAdmin']);
 $router->post('/admin/products', [ProductController::class, 'eliminarproductoadmin']);
-$router->get('/admin/agregarProductos', [ ProductController::class, 'agregar']); // Manejo de recuperar contraseña(POST)
+$router->get('/admin/agregarProductos', [ ProductController::class, 'agregar']); 
 $router->post('/admin/agregarProductos', [ ProductController::class, 'agregar']); 
 $router->get('/admin/categories', [DashboardController::class, 'index']);
 $router->get('/admin/orders', [DashboardController::class, 'index']);
 $router->get('/admin/profile', [ProfileController::class, 'index']);
+$router->post('/admin/categories', [ CategoryController::class, 'agregarcategoria']); 
+
+
+
 
 // Verificar y ejecutar la ruta actual
 $router->verifyRoutes();

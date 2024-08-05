@@ -34,7 +34,7 @@
                         <input type="password" class="form-control form-control-lg bg-light fs-6" name="password" placeholder="Password" required>
                     </div>
 
-
+                    <div class="g-recaptcha" data-sitekey="6LfaIgwqAAAAAFjrowWPA5vbDBONVvx83AP2Iv9S"></div>
                     <button type="submit" class="btn btn-lg btn-danger w-100 fs-6" style="background-color: #FF0000;">Iniciar</button>
                 </form>
 
@@ -55,4 +55,5 @@
 
 
     <script src="../JS/alerta_bloqueo.js"></script>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </div>

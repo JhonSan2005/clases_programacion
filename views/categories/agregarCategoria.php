@@ -7,6 +7,8 @@
             <div class="col-md-6 rounded-4 d-flex justify-content-center align-items-center flex-column left-box">
                 <div class="featured-image mb-3">
                     <video controls autoplay class="img-fluid" style="width: auto;">
+                        <source src="mp3/trailer.mp4" type="video/mp4">
+                        Tu navegador no admite el elemento de video.
                     </video>
                 </div>
             </div>
@@ -30,6 +32,7 @@
                     <div class="input-group mb-3">
                         <input type="text" class="form-control form-control-lg bg-light fs-6" name="nombre_categoria" placeholder="nombre_categoria" required>
                     </div>
+
                     <button type="submit" class="btn btn-lg btn-danger w-100 fs-6" style="background-color: #FF0000;">Agregra</button>
                 </form>
 

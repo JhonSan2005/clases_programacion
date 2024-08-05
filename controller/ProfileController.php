@@ -42,12 +42,9 @@ class ProfileController {
             $password = filter_var($_POST['password'] ?? '', FILTER_SANITIZE_STRING);
             $password_confirmation = filter_var($_POST['password_confirmation'] ?? '', FILTER_SANITIZE_STRING);
             $termsAndConditions = isset($_POST['termsAndConditions']) && $_POST['termsAndConditions'] === 'on';
-    
-<<<<<<< HEAD
-            
-=======
+
             // Creamos las validaciones
->>>>>>> cb6dfcec2ef8591fcee0a7c54297e65fed39ae26
+
             $alertas->crearAlerta(empty($documento), 'danger', 'El documento no puede estar vacío');
             $alertas->crearAlerta(empty($nombre), 'danger', 'El nombre no puede estar vacío');
             $alertas->crearAlerta(!$correo, 'danger', 'Correo no válido');
