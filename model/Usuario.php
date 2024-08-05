@@ -42,4 +42,3 @@ class Usuario extends Conexion{
     
 ?>
 
-?>
