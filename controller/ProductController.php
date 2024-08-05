@@ -91,7 +91,7 @@ class ProductController
                 if (!$alertas->obtenerAlertas()) {
                     $resultado = Product::agregarproductos($nombre_producto, $precio, $impuesto, $stock, $id_categoria, $descripcion, $imagen_url);
                     if( !$resultado ) return $alertas->crearAlerta(!$resultado, 'danger', 'Ha ocurrido un error, vuelve a intentarlo');
-                    return header("Location: /products");
+                    return header("Location: /admin/products");
                 }
             }
 

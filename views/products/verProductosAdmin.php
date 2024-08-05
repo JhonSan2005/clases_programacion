@@ -20,6 +20,7 @@
                     <th scope="col">Cantidad en Bodega</th>
                     <th scope="col">Descripcion</th>
                     <th scope="col">imagen</th>
+                    <th scope="col-2">opciones</th>
                 </tr>
             </thead>
             <tbody>
@@ -30,7 +31,11 @@
                     <td><?php echo $producto['impuesto']; ?></td>
                     <td><?php echo $producto['stock']; ?></td>
                     <td><?php echo $producto['descripcion']; ?></td>
-                    <td><?php echo $producto['imagen_url'] ?? 'No Image'; ?></td>
+                    <td><img class="img-thumbnail" style="width: 100px; height: 100px;" src="<?php echo $producto['imagen_url']; ?>" alt="Imagen Producto"></td>
+                    <td>
+                        <a href="/admin/edit-product?id=<?php echo $producto['id_producto']; ?>">Editar</a>
+                        <a href="/admin/delete-product?id=<?php echo $producto['id_producto']; ?>">Eliminar</a>
+                    </td>
                 </tr>
                 <?php endforeach; ?>
         </table>
