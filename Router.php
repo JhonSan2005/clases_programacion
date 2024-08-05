@@ -38,14 +38,15 @@ class Router {
             header('Location: /404');
         }
     }
-    public function render($view, $datos = [])
-    {
+    // Método para renderizar una vista
+    public function render($view, $datos = []) {
+        // Extrae los datos del array asociativo a variables individuales
         foreach ($datos as $key => $value) {
-            $$key = $value; 
+            $$key = $value;
         }
-
-        ob_start(); 
-
+        // Inicia el almacenamiento en el buffer de salida
+        ob_start();
+        // Incluye la vista especificada
         include_once __DIR__ . "/views/$view.php";
 
         $contenido = ob_get_clean(); // Limpia el Buffer
@@ -60,6 +61,8 @@ class Router {
         }
 
     }
+
 }
+
 
 ?>

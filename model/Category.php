@@ -18,23 +18,6 @@ class Category extends Conexion {
         $resultado = $conexion->query($query)->fetch_all(MYSQLI_ASSOC);
         return $resultado;
     }
-    public static function registrarcategoria($id_categoria,$nombre_categoria) {
-        $conexion = self::conectar();
-        $consulta = $conexion->prepare("INSERT INTO categorias (id_categoria,nombre_categoria) VALUES (?, ?)");
-        $consulta->bind_param('is', $id_categoria, $nombre_categoria);
-        $resultado = $consulta->execute();
-
-        return $resultado;
-    }
-    public static function actualizarCategoria($id_categoria, $nombre_categoria) {
-        $conexion = self::conectar();
-        $consulta = $conexion->prepare("UPDATE categorias SET nombre_categoria = ? WHERE id_categoria = ?");
-        $consulta->bind_param('si', $nombre_categoria, $id_categoria);
-        $resultado = $consulta->execute();
-    
-        return $resultado;
-    }
-    
 }
 
 

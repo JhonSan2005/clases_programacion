@@ -6,7 +6,7 @@ class DashboardController {
 
     public static function index( Router $router ) {
 
-        $router->render('dashboard/admin', [
+        $router->render('dashboard/dashboard', [
             "title" => "Dashboard"
         ]);
 

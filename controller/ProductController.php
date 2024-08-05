@@ -5,8 +5,7 @@ require_once __DIR__ . "/../model/Product.php";
 require_once __DIR__ . "/../model/Category.php";
 require_once __DIR__ . "/../helpers/functions.php";
 
-class ProductController
-{
+class ProductController{
 
     public static function index(Router $router)
     {
@@ -91,7 +90,7 @@ class ProductController
                 if (!$alertas->obtenerAlertas()) {
                     $resultado = Product::agregarproductos($nombre_producto, $precio, $impuesto, $stock, $id_categoria, $descripcion, $imagen_url);
                     if( !$resultado ) return $alertas->crearAlerta(!$resultado, 'danger', 'Ha ocurrido un error, vuelve a intentarlo');
-                    return header("Location: /products");
+                    return header("Location: /admin/products");
                 }
             }
 
@@ -105,4 +104,44 @@ class ProductController
             "categorias" => $categorias
         ]);
     }
+
+    public static function verProductosAdmin( Router $router ) {
+
+        $isAuth = isAuth();
+
+        if(!$isAuth) return header("Location: /404");
+
+        $productos = Product::mostrarproductos();
+
+        $router->render("products/verProductosAdmin", [
+            "title" => "Administrar Productos",
+            "productos" => $productos
+        ]);
+    }
+    
+    public static function eliminarProductoAdmin(Router $router) {
+        $productos = [];
+        if (!isAuth()) {
+            return header("Location: /404");
+        }
+    
+        $id_producto = $_GET['id'] ?? null;
+    
+        if ($id_producto === null) {
+            return header("Location: /404"); // Redirige si no se proporciona un ID
+        }
+    
+        $productos = Product::eliminarProductosAdmin($id_producto);
+    
+        $router->render("products/verProductosAdmin", [
+            "title" => "Ver Productos",
+            "productos" => $productos
+        ]);
+    }
+    
 }
+
+
+
+
+?>

@@ -16,6 +16,7 @@ class Product extends Conexion{
     }
 
 
+
     public static function mostrarproductos( int $limit = 0 ) {
         $conexion = self::conectar();
         $consulta = "SELECT * from productos";
@@ -51,15 +52,14 @@ class Product extends Conexion{
         return $resultado;
 
     }
-    public static function actualizarProducto($id_producto, $nombre_producto, $precio, $impuesto, $stock, $id_categoria, $descripcion, $imagen_url) {
+    public static function eliminarProductosAdmin($id_producto) {
         $conexion = self::conectar();
-        $consulta = $conexion->prepare("UPDATE productos SET nombre_producto = ?, precio = ?, impuesto = ?, stock = ?, id_categoria = ?, descripcion = ?, imagen_url = ? WHERE id_producto = ?");
-        $consulta->bind_param('ssddissi', $nombre_producto, $precio, $impuesto, $stock, $id_categoria, $descripcion, $imagen_url, $id_producto);
+        $consulta = $conexion->prepare("DELETE FROM productos WHERE id_producto = ?");
+        $consulta->bind_param('i', $id_producto);
         $resultado = $consulta->execute();
-    
+
         return $resultado;
     }
-    
     
 
 }

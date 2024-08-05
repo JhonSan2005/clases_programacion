@@ -1,15 +1,9 @@
-<?php
-
-include_once __DIR__ . "/../../helpers/functions.php";
-
-?>
-
-<div class="container2">
+<div class="container">
     <h1 class="form-title">Agregar Productos</h1>
 
     <?php include_once __DIR__ . "/../../views/includes/alertaTemplate.php"; ?>
 
-    <form action="/agregarProductos" method="POST" enctype="multipart/form-data">
+    <form action="/admin/agregarProductos" method="POST" enctype="multipart/form-data">
 
         <div class="form-group">
             <label for="nombre_producto" class="form-label">Nombre Producto</label>

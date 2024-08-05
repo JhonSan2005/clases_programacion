@@ -35,19 +35,9 @@ class Usuario extends Conexion{
         return $consulta;
     }
 
-    public static function actualizarUsuario($documento, $nombre, $correo, $password) {
-        $conexion = self::conectar();
-        $consulta = $conexion->prepare("UPDATE clientes SET nombre = ?, correo = ?, password = ? WHERE documento = ?");
-        $consulta->bind_param('ssss', $nombre, $correo, $password, $documento);
-        $resultado = $consulta->execute();
-    
-        return $resultado;
-    }
-    
+
 
 
 }
-
-
-
+    
 ?>
