@@ -18,33 +18,22 @@
 
                 <div class="header-text mb-2">
                     <h2 class="text-body-secondary">Hola, Bienvenidos a Repuestos JJJ</h2>
-                    <p class="text-body-secondary">Estamos felices de tenerte de vuelta.</p>
+                    <p class="text-body-secondary">Ingresa tu correo para Recupera contraseña</p>
                 </div>
 
                 <?php include_once __DIR__ . "/../../views/includes/alertaTemplate.php"; ?>
 
 
-                <form action="/login" method="POST">
+                <form action="/Usuario" method="POST">
 
                     <div class="input-group mb-2">
                         <input type="email" class="form-control form-control-lg bg-light fs-6" name="correo" placeholder="Correo" required>
                     </div>
 
-                    <div class="input-group mb-3">
-                        <input type="password" class="form-control form-control-lg bg-light fs-6" name="password" placeholder="Password" required>
-                    </div>
-
-
-                    <button type="submit" class="btn btn-lg btn-danger w-100 fs-6" style="background-color: #FF0000;">Iniciar</button>
+                    <button type="submit" class="btn btn-lg btn-danger w-100 fs-6" style="background-color: #FF0000;">Recuperar</button>
                 </form>
 
-                <div class="d-flex flex-column mt-3">
-                    <div class="col-12 text-center">
-                        <small>¿No tienes cuenta? <a href="/register" style="color: #FF0000;">Registrarse</a></small>
-                    </div>
-                    <div class="col-12 text-center mt-2">
-                        <small>¿Olvidaste tu contraseña? <a href="/recover" style="color: #FF0000;">Recuperar</a></small>
-                    </div>
+                
                 </div>
 
             </div>
