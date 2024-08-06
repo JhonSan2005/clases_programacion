@@ -37,18 +37,12 @@ class Usuario extends Conexion {
 
     public static function actualizarUsuario($documento, $nombre, $correo, $password, $imagen_url) {
         $conexion = self::conectar();
-
-        if (!empty($password)) {
-            $consulta = $conexion->prepare("UPDATE clientes SET nombre = ?, correo = ?, password = ?, imagen_url = ? WHERE documento = ?");
-            $consulta->bind_param('sssss', $nombre, $correo, $password, $imagen_url, $documento);
-        } else {
-            $consulta = $conexion->prepare("UPDATE clientes SET nombre = ?, correo = ?, imagen_url = ? WHERE documento = ?");
-            $consulta->bind_param('ssss', $nombre, $correo, $imagen_url, $documento);
-        }
-
+        $consulta = $conexion->prepare("UPDATE clientes SET documento=? , nombre=?, correo=?, password=?, imagen_url=? WHERE id=?");
+        $consulta->bind_param('sssss' ,$documento ,$nombre, $correo, $password, $imagen_url, );
         $resultado = $consulta->execute();
-
+    
         return $resultado;
     }
+    
 }
 ?>

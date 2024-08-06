@@ -46,9 +46,9 @@ $router->get('/admin/products', [ProductController::class, 'verProductosAdmin'])
 $router->post('/admin/products', [ProductController::class, 'eliminarproductoadmin']);
 $router->get('/admin/agregarProductos', [ ProductController::class, 'agregar']); 
 $router->post('/admin/agregarProductos', [ ProductController::class, 'agregar']); 
-$router->get('/admin/categories', [DashboardController::class, 'index']);
 $router->get('/admin/orders', [DashboardController::class, 'index']);
 $router->get('/admin/profile', [ProfileController::class, 'index']);
+$router->get('/admin/categories', [CategoryController::class, 'agregarcategoria']);
 $router->post('/admin/categories', [ CategoryController::class, 'agregarcategoria']); 
 
 
