@@ -1,13 +1,11 @@
 <?php
 
 require_once __DIR__ . "/../Router.php";
-require_once __DIR__ . "/../helpers/functions.php";
-require_once __DIR__ . '/../model/ProductCategory.php';
 require_once __DIR__ . "/../model/Product.php";
 require_once __DIR__ . "/../model/Category.php";
+require_once __DIR__ . "/../helpers/functions.php";
 
-class ProductController
-{
+class ProductController{
 
     public static function index(Router $router)
     {
@@ -113,7 +111,7 @@ class ProductController
 
         if(!$isAuth) return header("Location: /404");
 
-        $productos = ProductCategory::mostrarProductosCategorias();
+        $productos = Product::mostrarproductos();
 
         $router->render("products/verProductosAdmin", [
             "title" => "Administrar Productos",
@@ -121,6 +119,29 @@ class ProductController
         ]);
     }
 
+    public static function eliminarProductoAdmin(Router $router) {
+        $productos = [];
+        if (!isAuth()) {
+            return header("Location: / 404");
+        }
+    
+        $id_producto = $_GET['id'] ?? null;
+    
+        if ($id_producto === null) {
+            return header("Location: /404"); // Redirige si no se proporciona un ID
+        }
+    
+        $productos = Product::eliminarProductosAdmin($id_producto);
+    
+        $router->render("products/verProductosAdmin", [
+            "title" => "Ver Productos",
+            "productos" => $productos
+        ]);
+    }
+    
 }
+
+
+
 
 ?>

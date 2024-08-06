@@ -52,6 +52,14 @@ class Product extends Conexion{
         return $resultado;
 
     }
+    public static function eliminarProductosAdmin($id_producto) {
+        $conexion = self::conectar();
+        $consulta = $conexion->prepare("DELETE FROM productos WHERE id_producto = ?");
+        $consulta->bind_param('i', $id_producto);
+        $resultado = $consulta->execute();
+
+        return $resultado;
+    }
     
 
 }

@@ -10,8 +10,8 @@
 
         <div class="container d-flex gap-5 justify-content-center flex-wrap">
 
-            <?php if (isset($resultadosBusqueda) && $resultadosBusqueda): ?>
-                <?php foreach ($resultadosBusqueda as $resultadoBusqueda): ?>
+            <?php if (isset($resultadosBusqueda) && $resultadosBusqueda) : ?>
+                <?php foreach ($resultadosBusqueda as $resultadoBusqueda) : ?>
                     <div class="card card--product border">
                         <img src="../img/repuestos.png" class="card-img-top" alt="...">
                         <div class="card-body">
@@ -21,7 +21,7 @@
                         </div>
                     </div>
                 <?php endforeach; ?>
-            <?php else: ?>
+            <?php else : ?>
                 <p class="text-body-tertiary text-center fw-medium fs-5" role="alert">No hay datos para mostrar</p>
             <?php endif; ?>
 

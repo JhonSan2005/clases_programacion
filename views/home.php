@@ -29,7 +29,7 @@
 
             <h2>Ultimos Productos Agregados</h2>
 
-            <?php if (isset($productos) && $productos): ?>
+            <?php if (isset($productos) && $productos) : ?>
                 <div class="d-flex justify-content-md-end align-items-center">
                     <p style="margin-right: 45px;">
                         <a href="/products">Ver Más...</a>
@@ -42,8 +42,8 @@
 
 
         <div class="container d-flex gap-5 justify-content-center flex-wrap">
-            <?php if (isset($productos) && $productos): ?>
-                <?php foreach ($productos as $producto): ?>
+            <?php if (isset($productos) && $productos) : ?>
+                <?php foreach ($productos as $producto) : ?>
                     <div class="card card--product border">
                         <img src="../img/repuestos.png" class="card-img-top" alt="...">
                         <div class="card-body">
@@ -53,7 +53,7 @@
                         </div>
                     </div>
                 <?php endforeach; ?>
-            <?php else: ?>
+            <?php else : ?>
                 <p class="alert alert-light" role="alert">No hay datos para mostrar</p>
             <?php endif; ?>
         </div>

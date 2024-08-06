@@ -1,4 +1,5 @@
 <div class="container">
+    <h1 class="form-title">Agregar Productos</h1>
 
     <?php include_once __DIR__ . "/../../views/includes/alertaTemplate.php"; ?>
 

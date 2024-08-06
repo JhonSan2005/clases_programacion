@@ -36,10 +36,12 @@ $router->get('/close-session', [AuthController::class, 'closeSession']); // Cerr
 
 // Registrar rutas privadas (acceso restringido)
 $router->get('/profile', [ProfileController::class, 'index']); // Página de perfil
+$router->post('/profile', [ProfileController::class, 'actualizar']); // Manejo de registro (POST)
 
 // Solo Administrador
 $router->get('/admin/dashboard', [DashboardController::class, 'index']);
 $router->get('/admin/products', [ProductController::class, 'verProductosAdmin']);
+$router->post('/admin/products', [ProductController::class, 'eliminarproductoadmin']);
 $router->get('/admin/agregarProductos', [ ProductController::class, 'agregar']); // Manejo de recuperar contraseña(POST)
 $router->post('/admin/agregarProductos', [ ProductController::class, 'agregar']); 
 $router->get('/admin/categories', [DashboardController::class, 'index']);
