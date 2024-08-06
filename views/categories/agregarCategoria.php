@@ -33,7 +33,7 @@
                         <input type="text" class="form-control form-control-lg bg-light fs-6" name="nombre_categoria" placeholder="nombre_categoria" required>
                     </div>
 
-                    <button type="submit" class="btn btn-lg btn-danger w-100 fs-6" style="background-color: #FF0000;">Agregra</button>
+                    <button type="submit" class="btn btn-lg btn-danger w-100 fs-6" style="background-color: #FF0000;">Agregar</button>
                 </form>
 
                 </div>

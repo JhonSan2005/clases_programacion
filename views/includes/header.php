@@ -41,7 +41,7 @@
             <li><a class="dropdown-item" href="/admin/dashboard">Dashboard</a></li>
             <li><a class="dropdown-item" href="/profile">Perfil</a></li>
             <li><a class="dropdown-item" href="/carrito">Carrito de Compras</a></li>
-            <li><a class="dropdown-item" href="/productreturns">Devoluciones</a></li>
+            <li><a class="dropdown-item" href="/devolucion">Devoluciones</a></li>
             <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item" href="/close-session">Cerrar Sesion</a></li>
           </ul>

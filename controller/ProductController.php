@@ -122,7 +122,7 @@ class ProductController{
     public static function eliminarProductoAdmin(Router $router) {
         $productos = [];
         if (!isAuth()) {
-            return header("Location: / 404");
+            return header("Location: /404");
         }
     
         $id_producto = $_GET['id'] ?? null;
@@ -131,13 +131,17 @@ class ProductController{
             return header("Location: /404"); // Redirige si no se proporciona un ID
         }
     
-        $productos = Product::eliminarProductosAdmin($id_producto);
+        $result = Product::eliminarProductosAdmin($id_producto);
+        if ($result !== false) {
+            $productos = $result;
+        }
     
         $router->render("products/verProductosAdmin", [
             "title" => "Ver Productos",
             "productos" => $productos
         ]);
     }
+    
     
 }
 
