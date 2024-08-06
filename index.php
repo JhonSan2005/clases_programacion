@@ -15,6 +15,11 @@ require_once './controller/ProfileController.php';
 require_once './controller/RecoverController.php';
 require_once './controller/DashboardController.php';
 require_once './controller/CategoryController.php';
+require_once './controller/carritoController.php';
+require_once './controller/devolucionController.php';
+
+
+
 
 
 // Crear una instancia del Router
@@ -25,6 +30,13 @@ $router->get('/', [HomeController::class, 'index']); // Página de inicio
 $router->get('/products', [ProductController::class, 'index']); // Página de productos
 $router->get('/search', [BuscadorController::class, 'buscar']); // Página de búsqueda
 $router->get('/category', [ProductController::class, 'category']); 
+$router->get('/carrito', [carritoController::class, 'index']);
+$router->get('/devolucion', [devolucionController::class, 'devolucion']);
+
+
+
+
+
 
 
 // Rutas de autenticación

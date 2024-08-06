@@ -1,42 +1,113 @@
-<div class="container d-flex flex-column justify-content-center mt-5 custom-container">
-    <div class="bg-white shadow p-4">
-        <div class="text-center mb-4">
-            <img id="profileImage" class="img-thumbnail" src="/img/no_image.jpg" alt="Imagen Perfil" style="width: 250px; height: 250px;">
+<div class="container-xl px-4 mt-4">
+        <nav class="nav nav-borders">
+            <a class="nav-link active ms-0" href="perfil_user.php">Perfil</a>
+            <a class="nav-link" href="change_pass_user.php">Seguridad</a>
+        </nav>
+        <hr class="mt-0 mb-4">
+        <div class="row">
+            <div class="col-xl-4">
+                <div class="card mb-4 mb-xl-0">
+                    <div class="card-header">Foto de Perfil</div>
+                    <div class="card-body text-center">
+                        <img id="profileImage" class="img-account-profile mb-2 img-thumbnail" src="<?php echo htmlspecialchars($user['foto_perfil'] ?: 'http://bootdey.com/img/Content/avatar/avatar1.png'); ?>" alt="Foto de perfil">
+                        <div class="small font-italic text-muted mb-3">JPG o PNG máximo 5 MB</div>
+                        <div id="previewContainer" class="mb-3" style="display: none;">
+                            <img id="previewImage" class="img-thumbnail" src="#" alt="Vista previa">
+                            <button type="button" class="btn btn-danger mt-2" onclick="cancelUpload()">Cancelar</button>
+                        </div>
+                        <form id="formSubirImagen" action="../controller/upload_profile_user.php" method="POST" enctype="multipart/form-data">
+                            <label for="foto_perfil" class="btn btn-primary">
+                                <i class='bx bx-upload'></i> Seleccionar archivo
+                            </label><br><br>
+                            <input type="file" id="foto_perfil" name="foto_perfil" accept="image/*" required style="display:none;" onchange="previewImage(this);">
+                            <button type="submit" class="btn btn-primary">Subir Nueva imagen</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-8">
+                <div class="card mb-4">
+                    <div class="card-header">Detalles de la cuenta</div>
+                    <div class="card-body">
+                        <form action="../controller/edit_perfil_user.php" method="POST">
+                            <div class="mb-3">
+                                <label class="small mb-1" for="inputUsername">Nombre de Usuario</label>
+                                <input class="form-control" id="inputUsername" name="inputUsername" type="text" placeholder="Ingresa tu nombre de usuario" value="<?php echo htmlspecialchars($user['nombre_usuario']); ?>">
+                            </div>
+                            <div class="row gx-3 mb-3">
+                                <div class="col-md-6">
+                                    <label class="small mb-1" for="inputFirstName">Nombre</label>
+                                    <input class="form-control" id="inputFirstName" name="inputFirstName" type="text" placeholder="Ingresa tu nombre" value="<?php echo htmlspecialchars($user['nombre']); ?>">
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="small mb-1" for="inputLastName">Apellido</label>
+                                    <input class="form-control" id="inputLastName" name="inputLastName" type="text" placeholder="Ingresa tu apellido" value="<?php echo htmlspecialchars($user['apellido']); ?>">
+                                </div>
+                            </div>
+                            <div class="row gx-3 mb-3">
+                                <div class="col-md-6">
+                                    <label class="small mb-1" for="inputLocation">Ubicación</label>
+                                    <input class="form-control" id="inputLocation" name="inputLocation" type="text" placeholder="Ingresa tu ubicación" value="<?php echo htmlspecialchars($user['ubicacion']); ?>">
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label class="small mb-1" for="inputEmailAddress">Correo Electrónico</label>
+                                <input class="form-control" id="inputEmailAddress" name="inputEmailAddress" type="email" placeholder="Ingresa tu correo electrónico" value="<?php echo htmlspecialchars($user['correo_electronico']); ?>">
+                            </div>
+                            <button class="btn btn-primary" type="submit">Guardar Cambios</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
-        <form action="/profile" method="post" enctype="multipart/form-data">
-        <div class="mb-3">
-        <label for="documento" class="form-label fw-medium text-body-secondary">C.C.</label>
-            <input type="text" class="form-control text-black-30" name="documento" id="documento" value="<?php echo htmlspecialchars($_SESSION['documento']); ?>">
-        </div>
-            <div class="mb-3">
-                <label for="nombre" class="form-label fw-medium text-body-secondary">Apellidos</label>
-                <input type="text" class="form-control text-black-30" name="nombre" id="nombre" value="<?php echo htmlspecialchars($_SESSION['nombre']); ?>">
-            </div>
-            <div class="mb-3">
-                <label for="correo" class="form-label fw-medium text-body-secondary">Correo</label>
-                <input type="email" class="form-control text-black-30" name="correo" id="correo" value="<?php echo htmlspecialchars($_SESSION['correo']); ?>">
-            </div>
-            <div class="mb-3">
-                <label for="password" class="form-label fw-medium text-body-secondary">Contraseña</label>
-                <input type="password" class="form-control text-black-30" id="password" name="password" placeholder="Dejar vacío si no desea cambiarla">
-            </div>
-            <div class="mb-3">
-                <label for="profileImageInput" class="form-label fw-medium text-body-secondary">Seleccionar Imagen</label>
-                <input type="file" class="form-control text-black-30" id="profileImageInput" name="imagen_url">
-            </div>
-            <button type="submit" class="btn btn-primary">Guardar Cambios</button>
-        </form>
     </div>
-</div>
-<script>
-    document.getElementById('profileImageInput').addEventListener('change', function(event) {
-        const file = event.target.files[0];
-        if (file) {
-            const reader = new FileReader();
-            reader.onload = function(e) {
-                document.getElementById('profileImage').src = e.target.result;
-            };
-            reader.readAsDataURL(file);
+
+    <?php
+    if (isset($_GET['mensaje'])) {
+        $mensaje = $_GET['mensaje'];
+        if ($mensaje === 'exito') {
+            echo '<script>
+                    mostrarAlertaExito("Foto de perfil actualizada exitosamente.");
+                  </script>';
+        } elseif ($mensaje === 'exito_cambio') {
+            echo '<script>
+                    mostrarAlertaExito("Datos de perfil actualizados exitosamente.");
+                  </script>';
+        } else {
+            echo '<script>
+                    mostrarAlertaError("' . htmlspecialchars($mensaje) . '");
+                  </script>';
         }
-    });
-</script>
+    }
+    ?>
+
+    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="../js/alert.js"></script>
+    <script>
+        // Función para previsualizar imagen seleccionada
+        function previewImage(input) {
+            var preview = document.getElementById('preview');
+            var previewContainer = document.getElementById('previewContainer');
+            var previewImage = document.getElementById('previewImage');
+            
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function(e) {
+                    previewImage.src = e.target.result;
+                    previewContainer.style.display = 'block';
+                }
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        // Función para cancelar selección de archivo
+        function cancelUpload() {
+            var input = document.getElementById('foto_perfil');
+            var previewContainer = document.getElementById('previewContainer');
+            var previewImage = document.getElementById('previewImage');
+            
+            input.value = null; // Clear the file input
+            previewContainer.style.display = 'none'; // Hide the preview container
+            previewImage.src = ''; // Clear the preview image source
+        }
+    </script>
