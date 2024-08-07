@@ -214,3 +214,13 @@ footer .btn {
   display: flex;
   justify-content: center;
 }
+
+.container-agregar-productos {
+  width: 90%;
+}
+
+@media( min-width: 768px ) {
+  .container-agregar-productos {
+    width: 350px;
+  }
+}

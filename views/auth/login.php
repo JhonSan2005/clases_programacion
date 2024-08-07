@@ -23,8 +23,7 @@
 
                 <?php include_once __DIR__ . "/../../views/includes/alertaTemplate.php"; ?>
 
-
-                <form action="/login" method="POST">
+                <form id="login-form" action="/login" method="POST">
 
                     <div class="input-group mb-2">
                         <input type="email" class="form-control form-control-lg bg-light fs-6" name="correo" placeholder="Correo" required>
@@ -53,7 +52,20 @@
 
     </div>
 
-
     <script src="../JS/alerta_bloqueo.js"></script>
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-</div>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const form = document.getElementById('login-form');
+
+        form.addEventListener('submit', function(event) {
+            const recaptchaResponse = grecaptcha.getResponse();
+
+            if (recaptchaResponse.length === 0) {
+                event.preventDefault(); // Detiene el envío del formulario
+                alert('Por favor, completa el reCAPTCHA.');
+            }
+        });
+    });
+    </script>

@@ -61,3 +61,17 @@
 
 <!-- Agregar el script de reCAPTCHA -->
 <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const form = document.getElementById('login-form');
+
+        form.addEventListener('submit', function(event) {
+            const recaptchaResponse = grecaptcha.getResponse();
+
+            if (recaptchaResponse.length === 0) {
+                event.preventDefault(); // Detiene el envío del formulario
+                alert('Por favor, completa el reCAPTCHA.');
+            }
+        });
+    });
+    </script>

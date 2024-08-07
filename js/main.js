@@ -67,11 +67,4 @@ document.addEventListener('DOMContentLoaded', () => {
             updateCartTotal();
         });
     });
-
-    // Función para finalizar la compra
-    document.getElementById('checkout-btn').addEventListener('click', () => {
-        alert('Gracias por tu compra!');
-        document.getElementById('cart-items').innerHTML = '';
-        updateCartTotal();
-    });
 });
