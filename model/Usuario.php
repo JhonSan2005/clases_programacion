@@ -34,15 +34,16 @@ class Usuario extends Conexion {
         $consulta = $conexion->query("SELECT * FROM `clientes` WHERE `$campo` = '$datoABuscar' LIMIT 1")->fetch_assoc();
         return $consulta;
     }
-
-    public static function actualizarUsuario($documento, $nombre, $correo, $password, $imagen_url) {
+    public static function actualizarUsuario($documento, $nombre, $correo, $foto_perfil, $id) {
         $conexion = self::conectar();
-        $consulta = $conexion->prepare("UPDATE clientes SET documento=? , nombre=?, correo=?, password=?, imagen_url=? WHERE id=?");
-        $consulta->bind_param('sssss' ,$documento ,$nombre, $correo, $password, $imagen_url, );
+        $consulta = $conexion->prepare("UPDATE clientes SET documento=?, nombre=?, correo=?, foto_perfil=? WHERE id=?");
+        $consulta->bind_param('ssssi', $documento, $nombre, $correo, $foto_perfil, $id);
         $resultado = $consulta->execute();
-    
+        
         return $resultado;
     }
+
+
     
 }
 ?>

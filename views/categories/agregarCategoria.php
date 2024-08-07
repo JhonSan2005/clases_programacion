@@ -1,49 +1,21 @@
-<div class="container min-h-100 d-flex justify-content-center align-items-center">
+<div class="container my-3">
 
-    <div class="mt-5 d-flex justify-content-center" style="width: fit-content; height: fit-content;">
+    <?php include_once __DIR__ . "/../../views/includes/alertaTemplate.php"; ?>
 
-        <div class="d-flex flex-column flex-md-row gap-3 p-3 border rounded p-3 bg-white shadow" style="width: fit-content; height: fit-content;">
+    <div class="p-3 shadow-sm mx-auto container-agregar-productos bg-white">
+        <form action="/admin/categories" method="POST">
 
-            <div class="col-md-6 rounded-4 d-flex justify-content-center align-items-center flex-column left-box">
-                <div class="featured-image mb-3">
-                    <video controls autoplay class="img-fluid" style="width: auto;">
-                        <source src="mp3/trailer.mp4" type="video/mp4">
-                        Tu navegador no admite el elemento de video.
-                    </video>
-                </div>
+            <div class="form-group mb-3">
+                <label for="id_categoria" class="form-label">Id</label>
+                <input type="number" id="id_categoria" name="id_categoria" class="form-control" autocomplete="off" required>
             </div>
-
-            <!-- Contenedor Formulario -->
-            <div class="p-3">
-
-                <div class="header-text mb-2">
-                    <h2 class="text-body-secondary">Agregar Categoria</h2>
-                </div>
-
-                <?php include_once __DIR__ . "/../../views/includes/alertaTemplate.php"; ?>
-
-
-                <form action="/admin/categories" method="POST">
-
-                    <div class="input-group mb-2">
-                        <input type="number" class="form-control form-control-lg bg-light fs-6" name="id_categoria" placeholder="id_categoria" required>
-                    </div>
-
-                    <div class="input-group mb-3">
-                        <input type="text" class="form-control form-control-lg bg-light fs-6" name="nombre_categoria" placeholder="nombre_categoria" required>
-                    </div>
-
-                    <button type="submit" class="btn btn-lg btn-danger w-100 fs-6" style="background-color: #FF0000;">Agregar</button>
-                </form>
-
-                </div>
-
+            <div class="form-group mb-3">
+                <label for="nombre_categoria" class="form-label">Categoría</label>
+                <input type="text" id="nombre_categoria" name="nombre_categoria" class="form-control" autocomplete="off" required>
             </div>
-
-        </div>
-
+            <div class="form-group mb-3 d-flex justify-content-center">
+                <button type="submit" class="btn btn-success">Agregar</button>
+            </div>
+        </form>
     </div>
-
-
-    <script src="../JS/alerta_bloqueo.js"></script>
 </div>
