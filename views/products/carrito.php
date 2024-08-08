@@ -47,7 +47,8 @@
                     <strong id="total">$0 (Incluye $0 IVA)</strong>
                 </li>
             </ul>
-            <button class="btn btn-danger btn-block">Finalizar Compra</button>
+            <a href="/formaPago" class="btn btn-danger btn-block">Finalizar Compra</a>
+
             <div class="mt-3">
                 <h5>Cupon</h5>
                 <div class="input-group">

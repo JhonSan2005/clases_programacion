@@ -1,49 +1,66 @@
-<div class="container min-h-100 d-flex justify-content-center align-items-center">
+<?php
 
-    <div class="mt-5 d-flex justify-content-center" style="width: fit-content; height: fit-content;">
+require_once __DIR__ . "/../../helpers/functions.php";
 
-        <div class="d-flex flex-column flex-md-row gap-3 p-3 border rounded p-3 bg-white shadow" style="width: fit-content; height: fit-content;">
+// debugguear($categorias);
 
-            <div class="col-md-6 rounded-4 d-flex justify-content-center align-items-center flex-column left-box">
-                <div class="featured-image mb-3">
-                    <video controls autoplay class="img-fluid" style="width: auto;">
-                        <source src="mp3/trailer.mp4" type="video/mp4">
-                        Tu navegador no admite el elemento de video.
-                    </video>
-                </div>
-            </div>
+?>
 
-            <!-- Contenedor Formulario -->
-            <div class="p-3">
+<div class="container">
 
-                <div class="header-text mb-2">
-                    <h2 class="text-body-secondary">Agregar Categoria</h2>
-                </div>
+    <a class="btn btn-success mt-5 mb-3" href="/admin/agregarCategorias">Agregar Categoría</a>
 
-                <?php include_once __DIR__ . "/../../views/includes/alertaTemplate.php"; ?>
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Nombre Categoría</th>
+                    <th scope="col-2">Opciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php if (is_array($categorias) && count($categorias) > 0): ?>
+                    <?php foreach($categorias as $categoria): ?>
+                        <tr>
+                            <th><?php echo $categoria['id_categoria']; ?></th>
+                            <td><?php echo $categoria['nombre_categoria']; ?></td>
+                            <td>
+                                <a href="/admin/edit-categoria?id=<?php echo $categoria['id_categoria']; ?>">Editar</a>
+                                <!-- Button trigger modal -->
+                                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal<?php echo $categoria['id_categoria']; ?>">
+                                    Eliminar
+                                </button>
 
-
-                <form action="/admin/categories" method="POST">
-
-                    <div class="input-group mb-2">
-                        <input type="number" class="form-control form-control-lg bg-light fs-6" name="id_categoria" placeholder="id_categoria" required>
-                    </div>
-
-                    <div class="input-group mb-3">
-                        <input type="text" class="form-control form-control-lg bg-light fs-6" name="nombre_categoria" placeholder="nombre_categoria" required>
-                    </div>
-
-                    <button type="submit" class="btn btn-lg btn-danger w-100 fs-6" style="background-color: #FF0000;">Agregar</button>
-                </form>
-
-                </div>
-
-            </div>
-
-        </div>
-
+                                <!-- Modal -->
+                                <div class="modal fade" id="deleteModal<?php echo $categoria['id_categoria']; ?>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="deleteModalLabel<?php echo $categoria['id_categoria']; ?>" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h1 class="modal-title fs-5" id="deleteModalLabel<?php echo $categoria['id_categoria']; ?>">Confirmar Eliminación</h1>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                ¿Estás seguro de que deseas eliminar esta categoría?
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                                <form action="/admin/categorias?id=<?php echo $categoria['id_categoria']; ?>" method="POST">
+                                                    <button type="submit" class="btn btn-danger">Eliminar</button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    <?php endforeach; ?>
+                <?php else: ?>
+                    <tr>
+                        <td colspan="3">No hay categorías disponibles.</td>
+                    </tr>
+                <?php endif; ?>
+            </tbody> 
+        </table>
     </div>
-
-
-    <script src="../JS/alerta_bloqueo.js"></script>
 </div>

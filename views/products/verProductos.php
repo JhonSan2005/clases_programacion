@@ -1,10 +1,20 @@
 <!-- Categorías de Productos -->
-<div>
-    <a href="/products?category=all" class="category_item" category="all">Todo</a>
-    <a href="/products?category=1" class="category_item" category="1">Aceites</a>   
-    <a href="/products?category=2" class="category_item" category="2">Repuestos</a>
-    <a href="/products?category=3" class="category_item" category="3">Llantas</a>
-</div>
+<div class="container my-3">
+        <div class="d-flex align-items-center">
+            <span class="me-2">Filtrar por:</span>
+            <div class="dropdown">
+                <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                    Categorías
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <li><a class="dropdown-item" href="/products?category=all" category="all">Todo</a></li>
+                    <li><a class="dropdown-item" href="/products?category=1" category="1">Aceites</a></li>
+                    <li><a class="dropdown-item" href="/products?category=2" category="2">Repuestos</a></li>
+                    <li><a class="dropdown-item" href="/products?category=3" category="3">Llantas</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
 
 <!-- Productos -->
 <div class="container d-flex gap-5 justify-content-center flex-wrap">

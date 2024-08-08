@@ -17,7 +17,8 @@ require_once './controller/DashboardController.php';
 require_once './controller/CategoryController.php';
 require_once './controller/CarritoController.php';
 require_once './controller/DevolucionController.php';
-
+require_once './controller/HistoryController.php';
+require_once './controller/FormaPagoController.php';
 
 
 
@@ -32,6 +33,10 @@ $router->get('/search', [BuscadorController::class, 'buscar']); // Página de b�
 $router->get('/category', [ProductController::class, 'category']); 
 $router->get('/carrito', [CarritoController::class, 'index']);
 $router->get('/devolucion', [DevolucionController::class, 'devolucion']);
+$router->get('/history', [historyController::class, 'history']);
+$router->get('/formaPago', [FormaPagoController::class, 'formaPago']);
+
+
 
 // Rutas de autenticación
 $router->get('/login', [AuthController::class, 'login']); 

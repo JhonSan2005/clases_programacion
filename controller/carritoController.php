@@ -20,69 +20,9 @@ class CarritoController {
                 'imagen' => 'https://via.placeholder.com/150',
                 'cantidad' => 1
             ],
-            [
-                'id' => 1,
-                'nombre' => 'Llanta Xcelink 400-8 TL Sellomatic Motocarro J-9117',
-                'precio' => 134235,
-                'imagen' => 'https://via.placeholder.com/150',
-                'cantidad' => 1
-            ],
-            [
-                'id' => 1,
-                'nombre' => 'Llanta Xcelink 400-8 TL Sellomatic Motocarro J-9117',
-                'precio' => 134235,
-                'imagen' => 'https://via.placeholder.com/150',
-                'cantidad' => 1
-            ],
-            [
-                'id' => 1,
-                'nombre' => 'Llanta Xcelink 400-8 TL Sellomatic Motocarro J-9117',
-                'precio' => 134235,
-                'imagen' => 'https://via.placeholder.com/150',
-                'cantidad' => 1
-            ],
-            [
-                'id' => 1,
-                'nombre' => 'Llanta Xcelink 400-8 TL Sellomatic Motocarro J-9117',
-                'precio' => 134235,
-                'imagen' => 'https://via.placeholder.com/150',
-                'cantidad' => 1
-            ],
-            [
-                'id' => 1,
-                'nombre' => 'Llanta Xcelink 400-8 TL Sellomatic Motocarro J-9117',
-                'precio' => 134235,
-                'imagen' => 'https://via.placeholder.com/150',
-                'cantidad' => 1
-            ],
-            [
-                'id' => 1,
-                'nombre' => 'Llanta Xcelink 400-8 TL Sellomatic Motocarro J-9117',
-                'precio' => 134235,
-                'imagen' => 'https://via.placeholder.com/150',
-                'cantidad' => 1
-            ],
-            [
-                'id' => 1,
-                'nombre' => 'Llanta Xcelink 400-8 TL Sellomatic Motocarro J-9117',
-                'precio' => 134235,
-                'imagen' => 'https://via.placeholder.com/150',
-                'cantidad' => 1
-            ],
-            [
-                'id' => 1,
-                'nombre' => 'Llanta Xcelink 400-8 TL Sellomatic Motocarro J-9117',
-                'precio' => 134235,
-                'imagen' => 'https://via.placeholder.com/150',
-                'cantidad' => 1
-            ],
-            [
-                'id' => 1,
-                'nombre' => 'Llanta Xcelink 400-8 TL Sellomatic Motocarro J-9117',
-                'precio' => 134235,
-                'imagen' => 'https://via.placeholder.com/150',
-                'cantidad' => 1
-            ],
+            
+            
+         
             // Agrega más productos si es necesario.
         ];
 

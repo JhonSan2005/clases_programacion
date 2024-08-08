@@ -23,31 +23,36 @@
                 </div>
             </div>
         </div>
+        <div class="d-flex flex-column flex-md-row justify-content-md-between my-4 justify-content-center text-center">
+    <h2 class="w-100">Últimos Productos Agregados</h2>
+</div>
 
 
-        <div class="d-flex flex-column flex-md-row justify-content-md-between my-4">
-
-            <h2>Ultimos Productos Agregados</h2>
-
-            <div class="container d-flex gap-5 justify-content-center flex-wrap">
-    <?php if (isset($productos) && $productos): ?>
-        <?php foreach ($productos as $producto): ?>
-            <div class="card card--product border">
-                <img src="../img/repuestos.png" class="card-img-top" alt="Imagen del Producto">
-                <div class="card-body">
-                    <h5 class="card-title"><?php echo htmlspecialchars($producto['nombre_producto']); ?></h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <button class="btn btn-primary add-to-cart" 
-        data-id="<?php echo htmlspecialchars($producto['id_producto'] ?? '', ENT_QUOTES, 'UTF-8'); ?>" 
-        data-image="img/repuestos.png">Agregar al Carrito
-</button>
-
+    <div class="container d-flex gap-5 justify-content-center flex-wrap">
+        <?php if (isset($productos) && $productos): ?>
+            <?php foreach ($productos as $producto): ?>
+                <div class="card card--product border shadow-sm mb-4" style="width: 18rem;">
+                    <div class="card-img-top-wrapper" style="height: 200px; overflow: hidden;">
+                        <img src="<?php echo htmlspecialchars($producto['imagen_url']); ?>" class="card-img-top img-fluid" alt="Imagen del Producto" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title"><?php echo htmlspecialchars($producto['nombre_producto']); ?></h5>
+                        <p class="card-text"><?php echo htmlspecialchars($producto['descripcion']); ?></p>
+                        <p class="card-text">Precio: <?php echo htmlspecialchars($producto['precio']); ?> USD</p>
+                        <p class="card-text">Impuesto: <?php echo htmlspecialchars($producto['impuesto']); ?> %</p>
+                        <p class="card-text">Cantidad en Bodega: <?php echo htmlspecialchars($producto['stock']); ?></p>
+                        <button class="btn btn-primary add-to-cart" 
+                            data-id="<?php echo htmlspecialchars($producto['id_producto']); ?>" 
+                            data-image="<?php echo htmlspecialchars($producto['imagen_url']); ?>">
+                            Agregar al Carrito
+                        </button>
+                    </div>
                 </div>
-            </div>
-        <?php endforeach; ?>
-    <?php else: ?>
-        <p class="alert alert-light" role="alert">No hay datos para mostrar</p>
-    <?php endif; ?>
+            <?php endforeach; ?>
+        <?php else: ?>
+            <p class="alert alert-light" role="alert">No hay datos para mostrar</p>
+        <?php endif; ?>
+    </div>
 </div>
 
 </section>
