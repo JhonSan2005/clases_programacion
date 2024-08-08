@@ -1,12 +1,8 @@
 <?php
-//Registro de Rutas y Controladores
-
+// Registro de Rutas y Controladores
 
 // Incluir los archivos necesarios
-//require_once './Router.php';: Incluye el archivo que contiene la clase Router.
 require_once './Router.php';
-//require_once './controller/BuscadorController.php'; y demás: Incluyen los archivos 
-// de los controladores necesarios.//
 require_once './controller/BuscadorController.php';
 require_once './controller/ProductController.php';
 require_once './controller/HomeController.php';
@@ -24,7 +20,7 @@ require_once './controller/FormaPagoController.php';
 
 
 // Crear una instancia del Router
-$router = new Router;
+$router = new Router();
 
 // Registrar rutas públicas (acceso público)
 $router->get('/', [HomeController::class, 'index']); // Página de inicio
@@ -48,22 +44,19 @@ $router->post('/recover', [RecoverController::class, 'recover']);
 $router->get('/close-session', [AuthController::class, 'closeSession']); // Cerrar sesión
 
 // Registrar rutas privadas (acceso restringido)
-$router->get('/profile', [ProfileController::class, 'index']); // Página de perfil
-$router->post('/profile', [ProfileController::class, 'actualizar']); // Manejo de registro (POST)
+$router->get('/profile', [ProfileController::class, 'index']); 
+$router->post('/profile/verPerfil', [ProfileController::class, 'actualizar']); // Manejo de actualización (POST)
 
 // Solo Administrador
 $router->get('/admin/dashboard', [DashboardController::class, 'index']);
 $router->get('/admin/products', [ProductController::class, 'verProductosAdmin']);
 $router->post('/admin/products', [ProductController::class, 'eliminarproductoadmin']);
-$router->get('/admin/agregarProductos', [ ProductController::class, 'agregar']); 
-$router->post('/admin/agregarProductos', [ ProductController::class, 'agregar']); 
-$router->get('/admin/categories', [DashboardController::class, 'index']);
+$router->get('/admin/agregarProductos', [ProductController::class, 'agregar']); 
+$router->post('/admin/agregarProductos', [ProductController::class, 'agregar']); 
 $router->get('/admin/orders', [DashboardController::class, 'index']);
 $router->get('/admin/profile', [ProfileController::class, 'index']);
-$router->post('/admin/categories', [ CategoryController::class, 'agregarcategoria']); 
-
-
-
+$router->get('/admin/categories', [CategoryController::class, 'agregarcategoria']);
+$router->post('/admin/categories', [CategoryController::class, 'agregarcategoria']); 
 
 // Verificar y ejecutar la ruta actual
 $router->verifyRoutes();

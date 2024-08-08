@@ -22,7 +22,6 @@ class CategoryController {
         ]);
 
     }
-    
     public static function agregarcategoria(Router $router) {
         if (!isAuth()) {
             header("Location: /");
@@ -32,11 +31,11 @@ class CategoryController {
         $alertas = new Alerta;
     
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $id_categoria = filter_input(INPUT_POST, 'id_categoria', FILTER_VALIDATE_FLOAT);
-            $nombre_categoria = filter_input(INPUT_POST, 'nombre_categoria', FILTER_VALIDATE_FLOAT);
+            $id_categoria = $_POST['id_categoria'] ?? '';
+            $nombre_categoria = $_POST['nombre_categoria'] ?? '';
     
-            $alertas->crearAlerta(!$id_categoria, 'danger', 'El id no puede ir vacío');
-            $alertas->crearAlerta(!$nombre_categoria, 'danger', 'El nombre no puede ir vacío');
+            $alertas->crearAlerta(empty($id_categoria), 'danger', 'El id no puede ir vacío');
+            $alertas->crearAlerta(empty($nombre_categoria), 'danger', 'El nombre no puede ir vacío');
     
             if (!$alertas->obtenerAlertas()) {
                 $resultado = Category::agregarcategorias($id_categoria, $nombre_categoria);
@@ -52,6 +51,9 @@ class CategoryController {
             "alertas" => $alertas->obtenerAlertas()
         ]);
     }
+    
+    
+ 
     
 }
 
