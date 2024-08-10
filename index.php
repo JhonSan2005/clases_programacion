@@ -55,6 +55,8 @@ $router->get('/close-session', [AuthController::class, 'closeSession']); // Cerr
 // Registrar rutas privadas (acceso restringido)
 $router->get('/profile', [ProfileController::class, 'index']); 
 $router->post('/profile/verPerfil', [ProfileController::class, 'actualizar']); // Manejo de actualización (POST)
+$router->get('/profile/contraseña', [ProfileController::class, 'restablecerContraseña']); 
+
 
 // Solo Administrador
 $router->get('/admin/dashboard', [DashboardController::class, 'index']);

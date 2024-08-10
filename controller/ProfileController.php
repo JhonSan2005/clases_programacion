@@ -28,6 +28,7 @@ class ProfileController {
             "correo" => $user['correo']
         ]);
     }
+
     public static function actualizar(Router $router) {
         if (!isAuth()) {
             header("Location: /");
@@ -40,12 +41,12 @@ class ProfileController {
             $documento = $_POST['documento'] ?? '';
             $nombre = $_POST['nombre'] ?? '';
             $correo = $_POST['correo'] ?? '';
-            $foto_perfil = $_POST['foto_perfil'] ?? '';
+            $foto_de_perfil = $_POST['foto_de_perfil'] ?? '';
     
             // Asegúrate de que la sesión tenga el ID del usuario
             $id = $_SESSION['id'] ?? 0;
     
-            $resultado = Usuario::actualizarUsuario($documento, $nombre, $correo, $foto_perfil, $id);
+            $resultado = Usuario::actualizarUsuario($documento, $nombre, $correo, $foto_de_perfil, $id);
         }
     
         // Obtener la información del usuario nuevamente para mostrar en la vista
@@ -61,10 +62,20 @@ class ProfileController {
         ]);
     }
 
+    public static function restablecerContraseña(Router $router) {
+        if (!isAuth()) {
+            header("Location: /");
+            exit;
+        }
 
+        // Aquí iría la lógica para restablecer la contraseña
+        // Por ejemplo, enviar un correo electrónico con un enlace seguro, etc.
 
-       
-    
+        // Renderizar la vista para restablecer la contraseña
+        $router->render('profile/contraseña', [
+            'title' => 'Restablecer Contraseña'
+        ]);
+    }
 }
 
 ?>
