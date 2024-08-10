@@ -28,22 +28,28 @@
 </div>
 
 
-    <div class="container d-flex gap-5 justify-content-center flex-wrap">
+    <div class="container d-flex gap-5 justify-content-center flex-wrap" id="lista-productos">
         <?php if (isset($productos) && $productos): ?>
             <?php foreach ($productos as $producto): ?>
-                <div class="card card--product border shadow-sm mb-4" style="width: 18rem;">
+                <div class="card card--product border shadow-sm mb-4" style="width: 18rem;" data-id="<?php echo htmlspecialchars($producto['id_producto']); ?>">
                     <div class="card-img-top-wrapper" style="height: 200px; overflow: hidden;">
-                        <img src="<?php echo htmlspecialchars($producto['imagen_url']); ?>" class="card-img-top img-fluid" alt="Imagen del Producto" style="width: 100%; height: 100%; object-fit: cover;">
+                        <img
+                            src="<?php echo htmlspecialchars($producto['imagen_url']); ?>"
+                            class="card-img-top img-fluid"
+                            alt="Imagen del Producto"
+                            style="width: 100%; height: 100%; object-fit: cover;"
+                        >
                     </div>
+
+                    <hr>
+
                     <div class="card-body">
                         <h5 class="card-title"><?php echo htmlspecialchars($producto['nombre_producto']); ?></h5>
                         <p class="card-text"><?php echo htmlspecialchars($producto['descripcion']); ?></p>
-                        <p class="card-text">Precio: <?php echo htmlspecialchars($producto['precio']); ?> USD</p>
-                        <p class="card-text">Impuesto: <?php echo htmlspecialchars($producto['impuesto']); ?> %</p>
-                        <p class="card-text">Cantidad en Bodega: <?php echo htmlspecialchars($producto['stock']); ?></p>
-                        <button class="btn btn-primary add-to-cart" 
-                            data-id="<?php echo htmlspecialchars($producto['id_producto']); ?>" 
-                            data-image="<?php echo htmlspecialchars($producto['imagen_url']); ?>">
+                        <span class="d-block mb-1">Precio: <span class="card-price"><?php echo htmlspecialchars($producto['precio']); ?></span> USD</span>
+                        <span class="d-block mb-1">Impuesto: <span class="card-taxes"><?php echo htmlspecialchars($producto['impuesto']); ?></span> %</span>
+                        <span class="d-block mb-3">Cantidad en Bodega: <span class="card-stock"><?php echo htmlspecialchars($producto['stock']); ?></span></span>
+                        <button class="btn btn-primary add-to-cart">
                             Agregar al Carrito
                         </button>
                     </div>

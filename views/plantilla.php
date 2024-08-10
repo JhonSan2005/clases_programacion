@@ -26,18 +26,15 @@
     </div>
     <div class="offcanvas-body">
         <ul id="cart-items" class="list-group mb-3"></ul>
-        <div id="cart-total">Total: $0.00</div>
+        <div id="total">Total: $0.00</div>
         <a href="/carrito" class="btn btn-success w-100" id="checkout-btn">Ir al Carrito</a>
     </div>
 </div>
 
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-<script src="/js/carrito.js"></script>
-
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="js/main.js"></script>
+    <script src="/js/carrito.js"></script>
 
     <?php include_once __DIR__ . '../includes/footer.php'; ?>
 

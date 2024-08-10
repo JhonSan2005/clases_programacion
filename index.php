@@ -1,5 +1,4 @@
 <?php
-// Registro de Rutas y Controladores
 
 // Incluir los archivos necesarios
 require_once './Router.php';
@@ -17,10 +16,17 @@ require_once './controller/HistoryController.php';
 require_once './controller/FormaPagoController.php';
 
 
-
-
 // Crear una instancia del Router
 $router = new Router();
+
+// Permitir solicitudes desde cualquier origen
+header("Access-Control-Allow-Origin: *");
+
+// Permitir solicitudes con los métodos GET, POST, PUT y DELETE
+header("Access-Control-Allow-Methods: GET, POST");
+
+// Permitir el envío de la cabecera "Authorization" y "Content-Type"
+header("Access-Control-Allow-Headers: *");
 
 // Registrar rutas públicas (acceso público)
 $router->get('/', [HomeController::class, 'index']); // Página de inicio
@@ -29,8 +35,11 @@ $router->get('/search', [BuscadorController::class, 'buscar']); // Página de b�
 $router->get('/category', [ProductController::class, 'category']); 
 $router->get('/carrito', [CarritoController::class, 'index']);
 $router->get('/devolucion', [DevolucionController::class, 'devolucion']);
-$router->get('/history', [historyController::class, 'history']);
+$router->get('/history', [HistoryController::class, 'history']);
 $router->get('/formaPago', [FormaPagoController::class, 'formaPago']);
+
+
+$router->post('/api/search-product', [CarritoController::class, 'obtenerInfoProducto']);
 
 
 

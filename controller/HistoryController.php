@@ -2,7 +2,7 @@
 
 require_once __DIR__ . "/../Router.php";
 
-class historyController {
+class HistoryController {
 
     
 
