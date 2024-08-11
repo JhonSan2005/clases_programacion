@@ -26,86 +26,15 @@
     </div>
     <div class="offcanvas-body">
         <ul id="cart-items" class="list-group mb-3"></ul>
-        <div id="cart-total">Total: $0.00</div>
+        <div id="total">Total: $0.00</div>
         <a href="/carrito" class="btn btn-success w-100" id="checkout-btn">Ir al Carrito</a>
     </div>
 </div>
 
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-<script src="/js/carrito.js"></script>
-
-<script>
-    // JavaScript aquí
-
-    function addToCart(product) {
-        let cart = JSON.parse(localStorage.getItem('cart')) || [];
-        const existingProductIndex = cart.findIndex(item => item.id === product.id);
-        
-        if (existingProductIndex > -1) {
-            cart[existingProductIndex].quantity += product.quantity;
-        } else {
-            cart.push(product);
-        }
-        
-        localStorage.setItem('cart', JSON.stringify(cart));
-    }
-
-    function loadCart() {
-        const cart = JSON.parse(localStorage.getItem('cart')) || [];
-        const cartItemsContainer = document.getElementById('cart-items');
-        const cartTotal = document.getElementById('cart-total');
-        
-        cartItemsContainer.innerHTML = '';
-
-        let total = 0;
-        
-        cart.forEach(product => {
-            const item = document.createElement('li');
-            item.className = 'list-group-item d-flex justify-content-between';
-            item.innerHTML = `
-                <span>${product.name} (x${product.quantity})</span>
-                <strong>$${product.price * product.quantity}</strong>
-            `;
-            
-            cartItemsContainer.appendChild(item);
-            total += product.price * product.quantity;
-        });
-        
-        cartTotal.innerText = `Total: $${total.toFixed(2)}`;
-    }
-
-    function updateQuantity(productId, newQuantity) {
-        let cart = JSON.parse(localStorage.getItem('cart')) || [];
-        const productIndex = cart.findIndex(item => item.id === productId);
-        
-        if (productIndex > -1) {
-            if (newQuantity <= 0) {
-                cart.splice(productIndex, 1);
-            } else {
-                cart[productIndex].quantity = newQuantity;
-            }
-        }
-        
-        localStorage.setItem('cart', JSON.stringify(cart));
-        loadCart();
-    }
-
-    function deleteProduct(productId) {
-        let cart = JSON.parse(localStorage.getItem('cart')) || [];
-        cart = cart.filter(item => item.id !== productId);
-        
-        localStorage.setItem('cart', JSON.stringify(cart));
-        loadCart();
-    }
-
-    document.addEventListener('DOMContentLoaded', () => {
-        loadCart();
-    });
-</script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="js/main.js"></script>
+    <script src="/js/carrito.js"></script>
 
     <?php include_once __DIR__ . '../includes/footer.php'; ?>
 

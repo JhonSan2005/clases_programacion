@@ -82,31 +82,6 @@ footer {
   margin-bottom: 1rem;
 }
 
-/* Estilo para el botón de agregar al carrito */
-.btn.add-to-cart {
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  font-size: 16px;
-  border-radius: 5px;
-  transition: background-color 0.3s ease;
-}
-
-.btn.add-to-cart:hover {
-  background-color: #0056b3;
-}
-
-.btn.add-to-cart i {
-  margin-right: 5px;
-}
-#admin-main {
-  margin-top: 50px;
-}
-
 .carta {
   position: relative;
   background-size: cover;
