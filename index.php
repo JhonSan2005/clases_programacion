@@ -51,6 +51,9 @@ $router->get('/register', [AuthController::class, 'register']);
 $router->post('/register', [AuthController::class, 'register']); 
 $router->get('/recover', [RecoverController::class, 'recover']); 
 $router->post('/recover', [RecoverController::class, 'recover']); 
+$router->post('/recover/recovernew', [RecoverController::class, 'actualizarPassword']);
+$router->get('/recover/recovernew', [RecoverController::class, 'actualizarPassword']);
+
 $router->get('/close-session', [AuthController::class, 'closeSession']); // Cerrar sesión
 
 // Registrar rutas privadas (acceso restringido)

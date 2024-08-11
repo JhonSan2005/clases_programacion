@@ -3,7 +3,6 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 
-
 require 'PHPMailer.php';
 require 'Exception.php';
 require 'SMTP.php';
@@ -19,12 +18,12 @@ try {
 
     // Configuración del servidor
     $mail->isSMTP();
-    $mail->SMTPDebug = 2;
+    $mail->SMTPDebug = 0; // Cambiado a 0 para evitar la salida detallada de la depuración
     $mail->Host       = 'smtp.mailersend.net';
     $mail->SMTPAuth   = true;
     $mail->Username   = 'MS_BY6tJ4@trial-vywj2lpyd3ml7oqz.mlsender.net';
     $mail->Password   = 'noFhY4D8Dl2OpDnM';
-    $mail->SMTPSecure = 'tls';
+    $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS; // Utilizando constante para mejor legibilidad
     $mail->Port       = 587;
 
     // Destinatarios
@@ -37,7 +36,7 @@ try {
 
     // Generar un token de recuperación
     $token = bin2hex(random_bytes(16)); // Generar un token aleatorio
-    $recoverUrl = "https://tusitio.com/recuperar_contrasena.php?token=$token"; // Reemplaza con tu URL
+    $recoverUrl = "http://localhost:3000/recover/recovernew?token=" . $token; // Reemplaza con tu URL base
 
     // Guarda el token en la base de datos asociado con el usuario
     // Aquí deberías tener tu lógica para guardar el token asociado con el correo del destinatario.
@@ -51,11 +50,11 @@ try {
     ';
 
     // Adjuntar imagen
-    $mail->addAttachment('../img/logol.png', 'logol.png', 'base64', 'image/png');
-    $mail->addEmbeddedImage('../img/logol.png', 'logol', 'logol.png', 'base64', 'image/png');
+    $mail->addAttachment('../img/logol.png', 'logol.png'); // Adjuntar la imagen
+    $mail->addEmbeddedImage('../img/logol.png', 'logol');  // Embebida la imagen
 
     $mail->send();
-    echo 'Correo enviado correctamente';
+    echo "Enviado Correctamente";
 } catch (Exception $e) {
     echo 'Error al enviar el correo: ' . $mail->ErrorInfo;
 }
