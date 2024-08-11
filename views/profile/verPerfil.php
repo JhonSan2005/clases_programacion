@@ -50,6 +50,9 @@
                     <button class="btn btn-primary" type="submit">Guardar Cambios</button>
                 </form>
 
+<form action="/profile<?php echo htmlspecialchars($id['id']); ?>" method="POST">
+<button type="submit" class="btn btn-danger">Eliminar</button>
+</form>
                 </div>
             </div>
         </div>

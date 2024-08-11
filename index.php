@@ -1,7 +1,5 @@
 <?php
-// Registro de Rutas y Controladores
-
-// Incluir los archivos necesarios
+// Incluir los archivos necesarios para el router y controladores
 require_once './Router.php';
 require_once './controller/BuscadorController.php';
 require_once './controller/ProductController.php';
@@ -36,7 +34,8 @@ $router->get('/close-session', [AuthController::class, 'closeSession']); // Cerr
 
 // Registrar rutas privadas (acceso restringido)
 $router->get('/profile', [ProfileController::class, 'index']); 
-$router->post('/profile/verPerfil', [ProfileController::class, 'actualizar']); // Manejo de actualización (POST)
+$router->post('/profile/verPerfil', [ProfileController::class, 'actualizar']); 
+$router->post('/profile', [ProfileController::class, 'eliminarcuenta']);
 
 // Solo Administrador
 $router->get('/admin/dashboard', [DashboardController::class, 'index']);
@@ -51,5 +50,4 @@ $router->post('/admin/categories', [CategoryController::class, 'agregarcategoria
 
 // Verificar y ejecutar la ruta actual
 $router->verifyRoutes();
-
 ?>

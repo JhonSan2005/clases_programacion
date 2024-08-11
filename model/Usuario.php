@@ -5,7 +5,7 @@ class Usuario extends Conexion {
 
     public static function validarlogin($correo, $password) {
         $conexion = self::conectar();
-        $consulta = $conexion->prepare("SELECT * FROM clientes WHERE correo = ? LIMIT 1");
+        $consulta = $conexion->prepare("SELECT * FROM usuario WHERE correo = ? LIMIT 1");
         $consulta->bind_param('s', $correo);
         $consulta->execute();
         $resultado = $consulta->get_result()->fetch_assoc();
@@ -20,28 +20,42 @@ class Usuario extends Conexion {
         return false; // Retornar false si no se encuentra el usuario
     }
    
-    public static function registrarUsuario($documento, $nombre, $correo, $password) {
-        $conexion = self::conectar();
-        $consulta = $conexion->prepare("INSERT INTO clientes (documento, nombre, correo, password) VALUES (?, ?, ?, ?)");
-        $consulta->bind_param('ssss', $documento, $nombre, $correo, $password);
-        $resultado = $consulta->execute();
 
-        return $resultado;
-    }
+public static function registrarUsuario($documento, $nombre, $correo, $password) {
+    $conexion = self::conectar();
+    $id_rol = 2; 
+
+    $token = md5(uniqid(rand(), true));
+
+    $consulta = $conexion->prepare("INSERT INTO usuario (documento, nombre, correo, password, id_rol, token) VALUES (?, ?, ?, ?, ?, ?)");
+    $consulta->bind_param('ssssis', $documento, $nombre, $correo, $password, $id_rol, $token);
+    $resultado = $consulta->execute();
+
+    return $resultado;
+}
 
     public static function encontrarUsuario($campo, $datoABuscar) {
         $conexion = self::conectar();
-        $consulta = $conexion->query("SELECT * FROM `clientes` WHERE `$campo` = '$datoABuscar' LIMIT 1")->fetch_assoc();
+        $consulta = $conexion->query("SELECT * FROM `usuario` WHERE `$campo` = '$datoABuscar' LIMIT 1")->fetch_assoc();
         return $consulta;
     }
     public static function actualizarUsuario($documento, $nombre, $correo, $foto_perfil, $id) {
         $conexion = self::conectar();
-        $consulta = $conexion->prepare("UPDATE clientes SET documento=?, nombre=?, correo=?, foto_perfil=? WHERE id=?");
+        $consulta = $conexion->prepare("UPDATE usuario SET documento=?, nombre=?, correo=?, foto_perfil=? WHERE id=?");
         $consulta->bind_param('ssssi', $documento, $nombre, $correo, $foto_perfil, $id);
         $resultado = $consulta->execute();
         
         return $resultado;
     }
+    public static function eliminarcuentauser($id) {
+        $conexion = self::conectar();
+        $consulta = $conexion->prepare("DELETE FROM usuario WHERE id = ?");
+        $consulta->bind_param('i', $id);
+        $resultado = $consulta->execute();
+    
+        return $resultado;
+    }
+
 
 
     
