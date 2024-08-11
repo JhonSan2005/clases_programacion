@@ -32,39 +32,26 @@ class RecoverController {
     }
 
     public static function actualizarPassword(Router $router) {
+
         $alertas = new Alerta;
-        $token = ''; // Inicializa la variable token aquí
-    
+
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $token = $_POST['token'] ?? '';
-            $nuevaPassword = $_POST['nueva_password'] ?? '';
-            $confirmarPassword = $_POST['confirmar_password'] ?? '';
-    
-            if ($nuevaPassword === $confirmarPassword) {
-                $usuario = Usuario::encontrarUsuarioPorToken($token);
-                if ($usuario) {
-                    if (Usuario::actualizarPassword($usuario['id'], $nuevaPassword)) {
-                        Usuario::eliminarToken($usuario['id']); // Eliminar el token una vez actualizado
-                        $alertas->crearAlerta(false, 'success', 'Tu contraseña ha sido actualizada.');
-                        // Redirigir a la página de inicio o a la página deseada
-                        header('Location: /index.php'); // Cambia esto si necesitas otra ruta
-                        exit();
-                    } else {
-                        $alertas->crearAlerta(true, 'danger', 'No se pudo actualizar la contraseña.');
-                    }
-                } else {
-                    $alertas->crearAlerta(true, 'danger', 'Token inválido o expirado.');
-                }
-            } else {
-                $alertas->crearAlerta(true, 'danger', 'Las contraseñas no coinciden.');
-            }
+
+            $password = $_POST['password'] ?? ''; 
+
+            $alertas->crearAlerta(empty($password), 'danger','El campo no puede ir vacion');
+
+          if(!$alertas::obtenerAlertas()){
+
+            Usuario::actualizarpassword($password);
+
+          }  
         }
-    
-        $alertas = $alertas::obtenerAlertas();
+
+        $alertas = Alerta::obtenerAlertas();
         $router->render('/recover/recovernew', [
             "title" => "Actualizar Contraseña",
             "alertas" => $alertas,
-            "token" => htmlspecialchars($token) // Pasar el token al formulario de manera segura
         ]);
     }
     

@@ -71,10 +71,10 @@ class Usuario extends Conexion {
         return $consulta->execute();
     }
 
-    public static function actualizarPassword($idUsuario, $password) {
+    public static function actualizarpassword($password) {
         $conexion = self::conectar();
         $consulta = $conexion->prepare("UPDATE usuario SET password=? WHERE id=?");
-        $consulta->bind_param('si', $password, $idUsuario);
+        $consulta->bind_param('si', $password);
         return $consulta->execute();
     }
 
