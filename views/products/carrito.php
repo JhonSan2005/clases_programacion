@@ -5,7 +5,7 @@
                 <h4>Zona de coincidencia con el cliente</h4>
 
             </div>
-            <button class="btn btn-outline-primary mt-3">Seguir Comprando</button>
+            <a href="/products" class="btn btn-outline-primary mt-3">Seguir Comprando</a>
         </div>
 
         <div class="col-md-4">

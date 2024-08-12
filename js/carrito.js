@@ -7,6 +7,10 @@ document.addEventListener("DOMContentLoaded", () => {
   const contenedorSeccionCarrito = document.querySelector("#container--carrito");
   const listaProductos = document.querySelector('#lista-productos');
   const totalesCarritoContainer = document.querySelector("#cart-totals");
+
+  const contenedorResumenCompra = document.querySelector('.lista-resumen-compra');
+  const formularioFormaPago = document.querySelector('.formulario--pago');
+
   let articulosCarrito = JSON.parse(localStorage.getItem('carrito')) ?? [];
 
   // Agregamos todas las funciones
@@ -14,6 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
   if(contenedorSeccionCarrito) contenedorSeccionCarrito.addEventListener('click', incrementarCantidadProducto);
   if(contenedorSeccionCarrito) contenedorSeccionCarrito.addEventListener('click', decrementarCantidadProducto);
   if(contenedorSeccionCarrito) contenedorSeccionCarrito.addEventListener('click', eliminarProducto);
+  if(formularioFormaPago) formularioFormaPago.addEventListener('submit', procesarDatosPago);
   offCanvasCarrito.addEventListener('click', incrementarCantidadProducto);
   offCanvasCarrito.addEventListener('click', decrementarCantidadProducto);
   offCanvasCarrito.addEventListener('click', eliminarProducto);
@@ -247,6 +252,77 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
+  function procesarDatosPago(e) {
+    e.preventDefault();
+
+    const nombre = document.querySelector('#nombre').value
+    const apellido = document.querySelector('#apellido').value;
+    const correo = document.querySelector('#correo').value;
+    const direccion = document.querySelector('#direccion').value;
+    const pais = document.querySelector('#pais').value;
+    const departamento = document.querySelector('#departamento').value;
+    const municipio = document.querySelector('#municipio').value;
+
+    const data = {
+      nombre,
+      apellido,
+      correo,
+      direccion,
+      pais,
+      departamento,
+      municipio,
+      lista_productos: JSON.stringify(articulosCarrito)
+    }
+
+    const formData = new FormData;
+
+    for (const key in data) {
+      formData.append(key, data[key]);
+    }
+
+    try {
+
+      const venta = fetch('http://localhost:3000/api/venta', {
+        method: 'POST',
+        body: formData
+      })
+      .then( resp => resp.json() )
+      .then( result => {
+        alert(`${result?.msg}`);
+        setTimeout(() => {
+          localStorage.clear();
+          verificarStorage();
+          window.location.href = `${window.location.origin}/`;
+        }, 1000)
+      } );
+
+    } catch(err) {
+      alert(err);
+    }
+
+  }
+
+  function mostrarResumenCompra() {
+    if(contenedorResumenCompra) {
+
+      // Limpiar el HTML Previo
+      limpiarContenedorResumenCompras();
+      
+      articulosCarrito.forEach(producto => {
+        const { nombre, precio, cantidad } = producto;
+
+        const listaResumenCompra = document.createElement('li');
+        listaResumenCompra.className = 'list-group-item d-flex justify-content-between';
+        listaResumenCompra.innerHTML = `
+            <span>${nombre} - ${cantidad}</span>
+            <strong>$${precio * cantidad}</strong>
+        `;
+        contenedorResumenCompra.appendChild(listaResumenCompra);
+      });
+
+    }
+  }
+
   function limpiarOffCanvasCarrito() {
     while( offCanvasCarrito.firstChild ) {
       offCanvasCarrito.removeChild(offCanvasCarrito.firstChild);
@@ -259,10 +335,17 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
+  function limpiarContenedorResumenCompras() {
+    while( contenedorResumenCompra.firstChild ) {
+      contenedorResumenCompra.removeChild(contenedorResumenCompra.firstChild);
+    }
+  }
+
   function verificarStorage() {
 
       mostrarEnSeccionCarrito();
       mostrarProductoEnCarrito();
+      mostrarResumenCompra();
 
     if( totalesCarritoContainer && articulosCarrito.length < 1 ) {
       const botonCompletarCompra = totalesCarritoContainer.parentElement.querySelector('.btn-complete-purchase');

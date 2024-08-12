@@ -60,6 +60,12 @@ class Product extends Conexion{
 
         return $resultado;
     }
+
+    public static function actualizarProductoPorColumna($columnaDB, $datoAActualizar, $id_producto) {
+        $conexion = self::conectar();
+        $consulta = $conexion->query("UPDATE `productos` SET `$columnaDB` = '$datoAActualizar' WHERE id_producto = $id_producto");
+        return $consulta;
+    }
     
 
 }
