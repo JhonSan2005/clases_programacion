@@ -14,7 +14,7 @@ require_once './controller/CategoryController.php';
 require_once './controller/CarritoController.php';
 require_once './controller/DevolucionController.php';
 require_once './controller/HistoryController.php';
-require_once './controller/FormaPagoController.php';
+require_once './controller/VentaController.php';
 
 
 // Crear una instancia del Router
@@ -37,12 +37,10 @@ $router->get('/category', [ProductController::class, 'category']);
 $router->get('/carrito', [CarritoController::class, 'index']);
 $router->get('/devolucion', [DevolucionController::class, 'devolucion']);
 $router->get('/history', [HistoryController::class, 'history']);
-$router->get('/formaPago', [FormaPagoController::class, 'formaPago']);
+$router->get('/formaPago', [VentaController::class, 'index']);
 
 
 $router->post('/api/search-product', [CarritoController::class, 'obtenerInfoProducto']);
-
-
 
 // Rutas de autenticación
 $router->get('/login', [AuthController::class, 'login']); 

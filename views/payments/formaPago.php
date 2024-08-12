@@ -1,8 +1,8 @@
 <div class="container-fluid min-vh-100 d-flex flex-column">
-    <div class="row mt-5 mb-5 px-4 mx-auto" style="max-width: 1300px;"> <!-- Ajuste de max-width -->
+    <div class="row mt-5 mb-5 gap-5" style="max-width: 1300px;"> <!-- Ajuste de max-width -->
         <!-- Columna para el formulario -->
-        <div class="col-12 col-lg-8">
-            <div class="container-forma mx-auto">
+        <div class="col-12 col-lg-7">
+            <div class="container-forma mx-auto shadow bg-white rounded py-4 px-3">
                 <div class="row">
                     <div class="col py-5 text-center">
                         <h2>Confirmación de Pago</h2>
@@ -11,7 +11,7 @@
                 <div class="row">
                     <div class="col-12 col-md-8 offset-md-2">
                         <h4 class="mb-3">Dirección de Envío</h4>
-                        <form>
+                        <form method="POST" class="formulario--pago">
                             <div class="row">
                                 <div class="col-12 col-sm-6 mb-3">
                                     <label for="nombre">Nombre</label>
@@ -23,7 +23,7 @@
                                 </div>
                             </div>
                             <div class="mb-3">
-                                <label for="correo">Correo <span class="text-muted">(Opcional)</span></label>
+                                <label for="correo">Correo</label>
                                 <input type="email" class="form-control" id="correo" placeholder="nombre@correo.com" name="correo">
                             </div>
                             <div class="mb-3">
@@ -33,21 +33,21 @@
                             <div class="row">
                                 <div class="col-12 col-sm-4 mb-3">
                                     <label for="pais">País</label>
-                                    <select name="pais" id="pais" class="custom-select d-block w-100" required>
+                                    <select name="pais" id="pais" class="form-select d-block w-100" required>
                                         <option value="">Seleccionar País</option>
                                         <option value="colombia">Colombia</option>
                                     </select>
                                 </div>
                                 <div class="col-12 col-sm-4 mb-3">
-                                    <label for="estado">Departamento</label>
-                                    <select name="estado" id="estado" class="custom-select d-block w-100" required>
+                                    <label for="departamento">Departamento</label>
+                                    <select name="departamento" id="departamento" class="form-select d-block w-100" required>
                                         <option value="">Seleccionar</option>
                                         <option value="guaviare">Guaviare</option>
                                     </select>
                                 </div>
                                 <div class="col-12 col-sm-4 mb-3">
                                     <label for="municipio">Municipio</label>
-                                    <select name="municipio" id="municipio" class="custom-select d-block w-100" required>
+                                    <select name="municipio" id="municipio" class="form-select d-block w-100" required>
                                         <option value="">Seleccionar</option>
                                         <option value="retorno">Retorno</option>
                                         <option value="san-jose-del-guaviare">San Jose Del Guaviare</option>
@@ -79,38 +79,23 @@
                                 </div>
                             </div>
                             <hr class="mb-4">
-                            <button type="submit" class="btn btn-primary btn-lg btn-block">Confirmar Pago</button>
+                            <button type="submit" class="btn btn-primary btn-forma-pago fs-5">Confirmar Pago</button>
                         </form>
                     </div>
                 </div>
             </div>
         </div>
+
+
         <!-- Columna para el resumen de compra -->
-        <div class="col-12 col-lg-4">
-            <div class="container-forma mx-auto">
+        <div class="col-12 col-lg-4 shadow bg-white rounded py-4 px-2" style="height: fit-content;">
+            <div class="container-resumen-compra mx-auto">
                 <h4 class="mb-3">Resumen de Compra</h4>
-                <ul class="list-group mb-3">
-                    <li class="list-group-item d-flex justify-content-between">
-                        <span>Producto 1</span>
-                        <strong>$25,000</strong>
-                    </li>
-                    <li class="list-group-item d-flex justify-content-between">
-                        <span>Producto 2</span>
-                        <strong>$50,000</strong>
-                    </li>
-                    <li class="list-group-item d-flex justify-content-between">
-                        <span>Envío</span>
-                        <strong>$5,000</strong>
-                    </li>
-                    <li class="list-group-item d-flex justify-content-between">
-                        <span>Total</span>
-                        <strong>$80,000</strong>
-                    </li>
-                </ul>
-                <button type="button" class="btn btn-primary btn-lg btn-block">Editar Carrito</button>
+
+                <ul class="list-group lista-resumen-compra mb-3 overflow-y-auto" style="max-height: 170px;"></ul>
+
+                <a href="/carrito" class="btn btn-primary btn-lg btn-block fs-6">Editar Carrito</a>
             </div>
         </div>
     </div>
 </div>
-
-<script src="/js/formaPago.js"></script>
