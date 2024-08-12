@@ -8,7 +8,7 @@ class FormapagoController {
 
     public static function formaPago(Router $router) {
         $router->render('payments/formaPago', [
-            "title" => ""
+            "title" => "Forma de Pago"
         ]);
     }
 

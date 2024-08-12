@@ -71,17 +71,17 @@ class Usuario extends Conexion {
         return $consulta->execute();
     }
 
-    public static function actualizarpassword($password) {
+    public static function actualizarpassword($idUser, $password) {
         $conexion = self::conectar();
-        $consulta = $conexion->prepare("UPDATE usuario SET password=? WHERE id=?");
-        $consulta->bind_param('si', $password);
-        return $consulta->execute();
+        $query = "UPDATE usuario SET password='$password', token='' WHERE id='$idUser'";
+        $consulta = $conexion->query($query);
+        return $consulta;
     }
 
     // Método para encontrar usuario por correo
     public static function encontrarUsuarioPorCorreo($correo) {
         $conexion = self::conectar();
-        $consulta = $conexion->prepare("SELECT id FROM usuario WHERE correo=?");
+        $consulta = $conexion->prepare("SELECT * FROM usuario WHERE correo=?");
         $consulta->bind_param('s', $correo);
         $consulta->execute();
         $resultado = $consulta->get_result();
@@ -89,8 +89,11 @@ class Usuario extends Conexion {
         return $resultado->fetch_assoc(); // Devuelve el usuario o false si no se encontró
     }
     public static function encontrarUsuarioPorToken($token) {
-        $query = "SELECT * FROM usuario WHERE token = :token LIMIT 1";
-        // Lógica para preparar y ejecutar la consulta, luego devolver el usuario encontrado.
+        $conexion = Conexion::conectar();
+        $query = "SELECT * FROM usuario WHERE token = '$token' LIMIT 1";
+        $resultado = $conexion->query($query)->fetch_all(MYSQLI_ASSOC);
+
+        return $resultado;
     }
 }
 ?>

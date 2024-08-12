@@ -1,11 +1,7 @@
-<?php
-// Verifica si el token está presente en la URL y lo almacena en una variable segura
-$token = isset($_GET['token']) ? htmlspecialchars($_GET['token']) : '';
-?>
+<?php include_once __DIR__ . '/../includes/alertaTemplate.php'; ?>
 
-<form action="/recover/recovernew" method="POST">
-    <input type="hidden" name="token" value="<?php echo $token; ?>" required>
-    
+<?php if(isset($existeToken) && !empty($existeToken)): ?>
+<form method="POST">
     <div class="input-group mb-2">
         <input type="password" class="form-control" name="nueva_password" placeholder="Nueva Contraseña" required>
     </div>
@@ -16,4 +12,4 @@ $token = isset($_GET['token']) ? htmlspecialchars($_GET['token']) : '';
     
     <button type="submit" class="btn btn-danger w-100">Actualizar Contraseña</button>
 </form>
-
+<?php endif; ?>

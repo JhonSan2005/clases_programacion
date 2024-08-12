@@ -112,3 +112,5 @@
         </div>
     </div>
 </div>
+
+<script src="/js/formaPago.js"></script>
