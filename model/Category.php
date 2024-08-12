@@ -26,7 +26,14 @@ class Category extends Conexion {
 
         return $resultado;
     }
-
+    public static function eliminarCategoriaAdmin($id_categoria) {
+        $conexion = self::conectar();
+        $consulta = $conexion->prepare("DELETE FROM categorias WHERE id_categoria = ?");
+        $consulta->bind_param('i', $id_categoria); // Cambié $id_producto a $id_categoria
+        $resultado = $consulta->execute();
+    
+        return $resultado;
+    }
     
 }
 

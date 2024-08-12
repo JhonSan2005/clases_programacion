@@ -25,7 +25,7 @@
                 <label for="id_categoria" class="form-label">Categoría</label>
                 <select id="id_categoria" name="id_categoria" class="form-control" required>
                     <option value="">-- Selecciona una categoría --</option>
-                    <?php foreach ($categories as $categoria) : ?>
+                    <?php foreach ($categorias as $categoria) : ?>
                         <option value="<?php echo $categoria['id_categoria']; ?>"><?php echo $categoria['nombre_categoria']; ?></option>
                     <?php endforeach; ?>
                 </select>

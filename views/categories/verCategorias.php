@@ -5,7 +5,7 @@ require_once __DIR__ . "/../../helpers/functions.php";
 ?>
 
 <div class="container">
-    <a class="btn btn-success mt-5 mb-3" href="/admin/agregarCategorias">Agregar Categoría</a>
+    <a class="btn btn-success mt-5 mb-3" href="/admin/agregarCategoria">Agregar Categoría</a>
 
     <div class="table-responsive">
         <table class="table">
@@ -17,8 +17,8 @@ require_once __DIR__ . "/../../helpers/functions.php";
                 </tr>
             </thead>
             <tbody>
-                <?php if (is_array($categories) && count($categories) > 0): ?>
-                    <?php foreach($categories as $category): ?>
+                <?php if (is_array($categorias) && count($categorias) > 0): ?>
+                    <?php foreach($categorias as $category): ?>
                         <tr>
                             <th><?php echo $category['id_categoria']; ?></th>
                             <td><?php echo $category['nombre_categoria']; ?></td>
@@ -40,7 +40,7 @@ require_once __DIR__ . "/../../helpers/functions.php";
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                                                <form action="/admin/categorias?id=<?php echo $category['id_categoria']; ?>" method="POST">
+                                                <form action="/admin/categories?id=<?php echo $category['id_categoria']; ?>" method="POST">
                                                     <button type="submit" class="btn btn-danger">Eliminar</button>
                                                 </form>
                                             </div>

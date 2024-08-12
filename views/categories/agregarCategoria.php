@@ -1,64 +1,31 @@
-<?php
+<div class="container my-3">
 
-require_once __DIR__ . "/../../helpers/functions.php";
+    <?php include_once __DIR__ . "/../../views/includes/alertaTemplate.php"; ?>
 
-?>
+    <div class="p-3 shadow-sm mx-auto container-agregar-productos bg-white">
+        <form action="/admin/agregarCategoria" method="POST" enctype="multipart/form-data">
 
-<div class="container">
-
-    <a class="btn btn-success mt-5 mb-3" href="/admin/agregarCategorias">Agregar Categoría</a>
-
-    <div class="table-responsive">
-        <table class="table">
-            <thead>
-                <tr>
-                    <th scope="col">ID</th>
-                    <th scope="col">Nombre Categoría</th>
-                    <th scope="col-2">Opciones</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php if (is_array($categories) && count($categories) > 0): ?>
-                    <?php foreach($categories as $category): ?>
-                        <tr>
-                            <th><?php echo $category['id_categoria']; ?></th>
-                            <td><?php echo $category['nombre_categoria']; ?></td>
-                            <td>
-                                <a href="/admin/edit-categoria?id=<?php echo $category['id_categoria']; ?>">Editar</a>
-                                <!-- Button trigger modal -->
-                                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal<?php echo $category['id_categoria']; ?>">
-                                    Eliminar
-                                </button>
-
-                                <!-- Modal -->
-                                <div class="modal fade" id="deleteModal<?php echo $category['id_categoria']; ?>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="deleteModalLabel<?php echo $category['id_categoria']; ?>" aria-hidden="true">
-                                    <div class="modal-dialog">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h1 class="modal-title fs-5" id="deleteModalLabel<?php echo $category['id_categoria']; ?>">Confirmar Eliminación</h1>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                            </div>
-                                            <div class="modal-body">
-                                                ¿Estás seguro de que deseas eliminar esta categoría?
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                                                <form action="/admin/categorias?id=<?php echo $category['id_categoria']; ?>" method="POST">
-                                                    <button type="submit" class="btn btn-danger">Eliminar</button>
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </td>
-                        </tr>
+            <div class="form-group mb-3">
+                <label for="id_categoria" class="form-label">ID Categoría</label>
+                <input type="text" id="id_categoria" name="id_categoria" class="form-control" autocomplete="off" required>
+            </div>
+            <div class="form-group mb-3">
+                <label for="nombre_categoria" class="form-label">Nombre Categoría</label>
+                <input type="text" id="nombre_categoria" name="nombre_categoria" class="form-control" autocomplete="off" required>
+            </div>
+            <div class="form-group mb-3">
+                <label for="categoria_existente" class="form-label">Categoría Existente</label>
+                <select id="categoria_existente" name="categoria_existente" class="form-control">
+                    <option value="">-- Selecciona una categoría --</option>
+                    <?php foreach ($categorias as $categoria) : ?>
+                        <option value="<?php echo $categoria['id_categoria']; ?>"><?php echo $categoria['nombre_categoria']; ?></option>
                     <?php endforeach; ?>
-                <?php else: ?>
-                    <tr>
-                        <td colspan="3">No hay categorías disponibles.</td>
-                    </tr>
-                <?php endif; ?>
-            </tbody> 
-        </table>
+                </select>
+            </div>
+            <div class="form-group mb-3 d-flex justify-content-center">
+                <button type="submit" class="btn btn-success">Agregar</button>
+                <button type="reset" class="btn btn-warning">Vaciar</button>
+            </div>
+        </form>
     </div>
 </div>
