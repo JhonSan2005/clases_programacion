@@ -145,28 +145,59 @@
             </div>
             <!-- Columna para el resumen de compra -->
             <div class="col-12 col-lg-4">
-                <div class="container-forma mx-auto">
-                    <h4 class="mb-3">Resumen de Compra</h4>
-                    <ul class="list-group mb-3">
-                        <li class="list-group-item d-flex justify-content-between">
-                            <span>Producto 1</span>
-                            <strong>$25,000</strong>
-                        </li>
-                        <li class="list-group-item d-flex justify-content-between">
-                            <span>Producto 2</span>
-                            <strong>$50,000</strong>
-                        </li>
-                        <li class="list-group-item d-flex justify-content-between">
-                            <span>Envío</span>
-                            <strong>$5,000</strong>
-                        </li>
-                        <li class="list-group-item d-flex justify-content-between">
-                            <span>Total</span>
-                            <strong>$80,000</strong>
-                        </li>
-                    </ul>
-                    <button type="button" class="btn btn-primary btn-lg btn-block">Editar Carrito</button>
-                </div>
-            </div>
-        </div>
+    <div class="container-forma mx-auto">
+        <h4 class="mb-3">Resumen de Compra</h4>
+        <ul class="list-group mb-3" id="resumen-compra">
+            <li class="list-group-item d-flex justify-content-between">
+                <span>Producto 1</span>
+                <strong id="producto1">$25,000</strong>
+            </li>
+            <li class="list-group-item d-flex justify-content-between">
+                <span>Producto 2</span>
+                <strong id="producto2">$50,000</strong>
+            </li>
+            <li class="list-group-item d-flex justify-content-between">
+                <span>Envío</span>
+                <strong id="envio">$5,000</strong>
+            </li>
+            <li class="list-group-item d-flex justify-content-between">
+                <span>Subtotal</span>
+                <strong id="subtotal">$75,000</strong>
+            </li>
+            <li class="list-group-item d-flex justify-content-between">
+                <span>Total</span>
+                <strong id="total">$80,000</strong>
+            </li>
+        </ul>
     </div>
+</div>
+<script>
+function actualizarResumenCompra(e) {
+    e.preventDefault();
+    console.log(articulosCarrito); // Verifica el contenido del carrito
+
+    const resumenCompra = document.querySelector("#resumen-compra");
+    const producto1 = resumenCompra.querySelector("#producto1");
+    const producto2 = resumenCompra.querySelector("#producto2");
+    const envio = resumenCompra.querySelector("#envio");
+    const subtotal = resumenCompra.querySelector("#subtotal");
+    const total = resumenCompra.querySelector("#total");
+
+    let subTotal = 0;
+    let totalFinal = 0;
+    const iva = 0.19;
+
+    articulosCarrito.forEach(producto => {
+        subTotal += parseInt(producto.precio) * parseInt(producto.cantidad);
+    });
+
+    totalFinal = subTotal + (subTotal * iva);
+
+    producto1.textContent = `Producto 1: $${articulosCarrito[0]?.precio * articulosCarrito[0]?.cantidad || 0}`;
+    producto2.textContent = `Producto 2: $${articulosCarrito[1]?.precio * articulosCarrito[1]?.cantidad || 0}`;
+    envio.textContent = `$5,000`;
+    subtotal.textContent = `$${subTotal}`;
+    total.textContent = `$${totalFinal} (Incluye 19% IVA)`;
+}
+
+</script>

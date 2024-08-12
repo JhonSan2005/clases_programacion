@@ -10,13 +10,19 @@
                 <div class="card-body p-4 p-md-5">
                     <div class="text-center mb-4">
                         <a href="#!">
-                            <img src="../img/logo.png" alt="Logo" class="img-fluid mb-4" width="150" height="135">
+                            <img src="../img/logol.png" alt="Logo" class="img-fluid mb-4" width="150" height="135">
                         </a>
                     </div>
                     <h2 class="fs-5 text-center text-secondary mb-4">Restablecer Contraseña</h2>
                     
                     <form id="ResetPasswordForm" action="reset_pass.php" method="POST" onsubmit="return validatePassword()">
                         <input type="hidden" name="token" value="<?php echo $token; ?>">
+                        
+                        <div class="form-floating mb-3">
+                            <input type="password" class="form-control" name="current_password" id="current_password" placeholder="Contraseña actual" required>
+                            <label for="current_password" class="form-label">Contraseña Actual</label>
+                        </div>
+
                         <div class="form-floating mb-3">
                             <input type="password" class="form-control" name="new_password" id="new_password" placeholder="Nueva contraseña" required
                             pattern="(?=.*\d)(?=.*[!@#$%^&*]).{8,}" title="La contraseña debe tener al menos 8 caracteres, incluir un número y un símbolo">
@@ -33,6 +39,7 @@
 
                     <script>
                         function validatePassword() {
+                            const currentPassword = document.getElementById('current_password').value;
                             const newPassword = document.getElementById('new_password').value;
                             const confirmPassword = document.getElementById('confirm_password').value;
 

@@ -1,20 +1,61 @@
-<div class="container-fluid">
+<?php
 
-    <h2 class="text-center my-5">Categorias</h2>
+require_once __DIR__ . "/../../helpers/functions.php";
 
-    <div class="row justify-content-center row-gap-5">
-        <?php if(isset($categories) && $categories): ?>
-            <?php foreach( $categories as $category ): ?>
-                <div class="col-12 col-sm-6 col-md-4 col-xl-3">
-                    <div class="card card--category text-center" style="background-image: linear-gradient(0deg, rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('../img/llantas.png');">
-                        <h3 class="text-white"><?php echo $category['nombre_categoria']; ?></h3>
-                        <a href="llantas.html"><button class="btn btn-warning">VER +</button></a>
-                    </div>
-                </div>
-            <?php endforeach; ?>
-    
-        <?php else: ?>
-            <p class="alert alert-light" role="alert">No hay datos para mostrar</p>
-        <?php endif; ?>
+?>
+
+<div class="container">
+    <a class="btn btn-success mt-5 mb-3" href="/admin/agregarCategorias">Agregar Categoría</a>
+
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Nombre Categoría</th>
+                    <th scope="col-2">Opciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php if (is_array($categories) && count($categories) > 0): ?>
+                    <?php foreach($categories as $category): ?>
+                        <tr>
+                            <th><?php echo $category['id_categoria']; ?></th>
+                            <td><?php echo $category['nombre_categoria']; ?></td>
+                            <td>
+                                <a href="/admin/edit-categoria?id=<?php echo $category['id_categoria']; ?>">Editar</a>
+                                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal<?php echo $category['id_categoria']; ?>">
+                                    Eliminar
+                                </button>
+
+                                <div class="modal fade" id="deleteModal<?php echo $category['id_categoria']; ?>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="deleteModalLabel<?php echo $category['id_categoria']; ?>" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h1 class="modal-title fs-5" id="deleteModalLabel<?php echo $category['id_categoria']; ?>">Confirmar Eliminación</h1>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                ¿Estás seguro de que deseas eliminar esta categoría?
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                                <form action="/admin/categorias?id=<?php echo $category['id_categoria']; ?>" method="POST">
+                                                    <button type="submit" class="btn btn-danger">Eliminar</button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    <?php endforeach; ?>
+                <?php else: ?>
+                    <tr>
+                        <td colspan="3">No hay categorías disponibles.</td>
+                    </tr>
+                <?php endif; ?>
+            </tbody> 
+        </table>
     </div>
 </div>

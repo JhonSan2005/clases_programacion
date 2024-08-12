@@ -60,6 +60,7 @@ $router->get('/profile/contraseña', [ProfileController::class, 'restablecerCont
 
 // Solo Administrador
 $router->get('/admin/dashboard', [DashboardController::class, 'index']);
+
 $router->get('/admin/products', [ProductController::class, 'verProductosAdmin']);
 $router->post('/admin/products', [ProductController::class, 'eliminarproductoadmin']);
 $router->get('/admin/agregarProductos', [ProductController::class, 'agregar']); 

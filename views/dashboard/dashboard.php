@@ -1,66 +1,52 @@
+
 <?php
-
-require_once __DIR__ . "/../../helpers/functions.php";
-
-// debugguear($categorias);
-
+$fechaInicio = $fechaInicio ?? '';
+$fechaFin = $fechaFin ?? '';
 ?>
 
-<div class="container">
+<!-- Main Content Start -->
+<div class="container mt-4">
+    <h1>Estadísticas para el rango de fechas: <?php echo htmlspecialchars($fechaInicio); ?> a <?php echo htmlspecialchars($fechaFin); ?></h1>
 
-    <a class="btn btn-success mt-5 mb-3" href="/admin/agregarCategorias">Agregar Categoría</a>
+    <form method="POST" action="admin/dashboard" class="mb-4">
+        <label for="fecha_inicio">Fecha de inicio:</label>
+        <input type="date" id="fecha_inicio" name="fecha_inicio" required>
+        <label for="fecha_fin">Fecha de fin:</label>
+        <input type="date" id="fecha_fin" name="fecha_fin" required>
+        <button type="submit" class="btn btn-primary">Obtener Estadísticas</button>
+    </form>
 
-    <div class="table-responsive">
-        <table class="table">
-            <thead>
-                <tr>
-                    <th scope="col">ID</th>
-                    <th scope="col">Nombre Categoría</th>
-                    <th scope="col-2">Opciones</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php if (is_array($categorias) && count($categorias) > 0): ?>
-                    <?php foreach($categorias as $categoria): ?>
-                        <tr>
-                            <th><?php echo $categoria['id_categoria']; ?></th>
-                            <td><?php echo $categoria['nombre_categoria']; ?></td>
-                            <td>
-                                <a href="/admin/edit-categoria?id=<?php echo $categoria['id_categoria']; ?>">Editar</a>
-                                <!-- Button trigger modal -->
-                                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal<?php echo $categoria['id_categoria']; ?>">
-                                    Eliminar
-                                </button>
-
-                                <!-- Modal -->
-                                <div class="modal fade" id="deleteModal<?php echo $categoria['id_categoria']; ?>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="deleteModalLabel<?php echo $categoria['id_categoria']; ?>" aria-hidden="true">
-                                    <div class="modal-dialog">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h1 class="modal-title fs-5" id="deleteModalLabel<?php echo $categoria['id_categoria']; ?>">Confirmar Eliminación</h1>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                            </div>
-                                            <div class="modal-body">
-                                                ¿Estás seguro de que deseas eliminar esta categoría?
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                                                <form action="/admin/categorias?id=<?php echo $categoria['id_categoria']; ?>" method="POST">
-                                                    <button type="submit" class="btn btn-danger">Eliminar</button>
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </td>
-                        </tr>
-                    <?php endforeach; ?>
-                <?php else: ?>
+    <?php if ($fechaInicio && $fechaFin && $estadisticas) : ?>
+        <div class="table-responsive">
+            <table class="table table-bordered">
+                <thead>
                     <tr>
-                        <td colspan="3">No hay categorías disponibles.</td>
+                        <th>Estadística</th>
+                        <th>Valor</th>
                     </tr>
-                <?php endif; ?>
-            </tbody> 
-        </table>
-    </div>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Total de usuarios registrados</td>
+                        <td><?php echo htmlspecialchars($estadisticas['total_usuarios']); ?></td>
+                    </tr>
+                    <tr>
+                        <td>Total de productos en el sistema</td>
+                        <td><?php echo htmlspecialchars($estadisticas['total_productos']); ?></td>
+                    </tr>
+                    <tr>
+                        <td>Total de categorías en el sistema</td>
+                        <td><?php echo htmlspecialchars($estadisticas['total_categorias']); ?></td>
+                    </tr>
+                    <tr>
+                        <td>Total de ventas en el rango de fechas</td>
+                        <td><?php echo htmlspecialchars($estadisticas['total_ventas']); ?></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    <?php elseif ($fechaInicio && $fechaFin) : ?>
+        <p>No se encontraron estadísticas para el rango de fechas seleccionado.</p>
+    <?php endif; ?>
 </div>
+<!-- Main Content End -->
