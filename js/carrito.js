@@ -282,18 +282,25 @@ document.addEventListener("DOMContentLoaded", () => {
 
     try {
 
-      const venta = fetch('http://localhost:3000/api/venta', {
+      const venta = fetch(`${window.location.origin}/api/venta`, {
         method: 'POST',
         body: formData
       })
       .then( resp => resp.json() )
       .then( result => {
-        alert(`${result?.msg}`);
-        setTimeout(() => {
-          localStorage.clear();
-          verificarStorage();
-          window.location.href = `${window.location.origin}/`;
-        }, 1000)
+        if( result?.type == 'success' ) {
+          alert(`${result?.msg}`);
+          setTimeout(() => {
+            localStorage.clear();
+            verificarStorage();
+            window.location.href = `${window.location.origin}/`;
+          }, 1000)
+        } else {
+          alert(`${result?.msg}`);
+          setTimeout(() => {
+            window.location.href = `${window.location.origin}/formaPago`;
+          }, 1000)
+        }
       } );
 
     } catch(err) {
