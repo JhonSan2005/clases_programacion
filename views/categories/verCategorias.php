@@ -23,7 +23,7 @@ require_once __DIR__ . "/../../helpers/functions.php";
                             <th><?php echo $category['id_categoria']; ?></th>
                             <td><?php echo $category['nombre_categoria']; ?></td>
                             <td>
-                                <a href="/admin/edit-categoria?id=<?php echo $category['id_categoria']; ?>">Editar</a>
+                                
                                 <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal<?php echo $category['id_categoria']; ?>">
                                     Eliminar
                                 </button>

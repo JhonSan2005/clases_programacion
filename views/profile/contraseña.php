@@ -15,7 +15,7 @@
                     </div>
                     <h2 class="fs-5 text-center text-secondary mb-4">Restablecer Contraseña</h2>
                     
-                    <form id="ResetPasswordForm" action="reset_pass.php" method="POST" onsubmit="return validatePassword()">
+                    <form id="ResetPasswordForm" action="profile/contraseña" method="POST" onsubmit="return validatePassword()">
                         <input type="hidden" name="token" value="<?php echo $token; ?>">
                         
                         <div class="form-floating mb-3">

@@ -35,7 +35,7 @@
             <td><?php echo $producto['descripcion']; ?></td>
             <td><img class="img-thumbnail" style="width: 100px; height: 100px;" src="<?php echo $producto['imagen_url']; ?>" alt="Imagen Producto"></td>
             <td>
-                <a href="/admin/edit-product?id=<?php echo $producto['id_producto']; ?>">Editar</a>
+               
                 <!-- Button trigger modal -->
                 <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal<?php echo $producto['id_producto']; ?>">
                     Eliminar

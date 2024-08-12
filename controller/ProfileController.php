@@ -92,7 +92,7 @@ class ProfileController {
 
  
 
-    public static function restablecerContraseña(Router $router) {
+    public static function actualizarpassword(Router $router) {
         if (!isAuth()) {
             header("Location: /");
             exit;

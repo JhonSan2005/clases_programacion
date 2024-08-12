@@ -36,7 +36,7 @@
           <ul class="dropdown-menu">
             <li><a class="dropdown-item" href="/">Vista Usuarios</a></li>
             <li><a class="dropdown-item" href="/admin/profile">Perfil</a></li>
-            <li><a class="dropdown-item" href="/admin/orders">Pedidos</a></li>
+      
             <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item" href="/close-session">Cerrar Sesion</a></li>
           </ul>
