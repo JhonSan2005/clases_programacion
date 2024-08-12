@@ -61,6 +61,36 @@ class ProfileController {
             'correo' => $user['correo']
         ]);
     }
+    public static function eliminarcuenta(Router $router) {
+        if (!isAuth()) {
+            return header("Location: /404");
+        }
+    
+        $id = $_POST['id'] ?? null;
+    
+        if ($id === null) {
+            return header("Location: /404"); // Redirige si no se proporciona un ID
+        }
+    
+        $result = Usuario::eliminarcuentauser($id);
+        
+        // Verifica si la eliminación fue exitosa
+        if ($result) {
+            // Redirigir a la página de inicio o mostrar un mensaje de éxito
+            return header("Location: /home");
+        } else {
+            // Manejar el caso donde la eliminación falla
+            $error = "Error al eliminar la cuenta.";
+        }
+    
+        // Aunque normalmente no redirigirías aquí si falló la eliminación
+        $router->render("home", [
+            "title" => "Home",
+        ]);
+    }
+ 
+
+ 
 
     public static function restablecerContraseña(Router $router) {
         if (!isAuth()) {

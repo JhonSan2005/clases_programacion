@@ -1,4 +1,5 @@
 <?php
+// Registro de Rutas y Controladores
 
 // Incluir los archivos necesarios
 require_once './Router.php';
@@ -50,13 +51,14 @@ $router->get('/register', [AuthController::class, 'register']);
 $router->post('/register', [AuthController::class, 'register']); 
 $router->get('/recover', [RecoverController::class, 'recover']); 
 $router->post('/recover', [RecoverController::class, 'recover']); 
+$router->post('/recover/recovernew', [RecoverController::class, 'actualizarPassword']);
+$router->get('/recover/recovernew', [RecoverController::class, 'actualizarPassword']);
+
 $router->get('/close-session', [AuthController::class, 'closeSession']); // Cerrar sesión
 
 // Registrar rutas privadas (acceso restringido)
 $router->get('/profile', [ProfileController::class, 'index']); 
 $router->post('/profile/verPerfil', [ProfileController::class, 'actualizar']); // Manejo de actualización (POST)
-$router->get('/profile/contraseña', [ProfileController::class, 'restablecerContraseña']); 
-
 
 // Solo Administrador
 $router->get('/admin/dashboard', [DashboardController::class, 'index']);
@@ -72,5 +74,4 @@ $router->post('/admin/categories', [CategoryController::class, 'agregarcategoria
 
 // Verificar y ejecutar la ruta actual
 $router->verifyRoutes();
-
 ?>

@@ -1,20 +1,29 @@
 <?php
 class Conexion {
-    // Propiedades de  laconexión a la base de datos
-    private static $host = "localhost";
-    private static $user = "root";
-    private static $password = "";
-    private static $db_name = "BD_JJ";
-    // Método estático para establecer una conexión a la base de datos
+    private static $host = 'localhost';
+    private static $user = 'root';
+    private static $password = '';
+    private static $db_name = 'BD_JJ';
+    public static function configurar($host, $user, $password, $db_name) {
+        self::$host = $host;
+        self::$user = $user;
+        self::$password = $password;
+        self::$db_name = $db_name;
+    }
     public static function conectar() {
-        // Crear una nueva conexión usando mysqli
-        $conexion = new mysqli(self::$host, self::$user, self::$password, self::$db_name);
-        // Verificar si hubo algún error en la conexión
+        $conexion = new mysqli(self::$host, self::$user, self::$password);
         if ($conexion->connect_error) {
-            // Mostrar un mensaje de error y terminar el script si no se pudo conectar
-            die("No se pudo conectar a la base de datos: " . $conexion->connect_error);
-        }  
-        // Devolver el objeto de conexión si se conectó correctamente
+            die("No se pudo conectar al servidor MySQL: " . $conexion->connect_error);
+        }
+        $result = $conexion->query("SHOW DATABASES LIKE '" . self::$db_name . "'");
+        if ($result && $result->num_rows == 0) {
+            if ($conexion->query("CREATE DATABASE " . self::$db_name) === TRUE) {
+                echo "Base de datos creada exitosamente. ";
+            } else {
+                die("Error al crear la base de datos: " . $conexion->error);
+            }
+        }
+        $conexion->select_db(self::$db_name);
         return $conexion;
     }
 }

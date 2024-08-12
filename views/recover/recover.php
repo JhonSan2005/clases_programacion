@@ -15,33 +15,33 @@
             <!-- Contenedor Formulario -->
             <div class="p-3">
 
-            <div class="header-text mb-2">
-                <h2 class="text-body-secondary">Hola, Bienvenidos a Repuestos JJJ</h2>
-                <p class="text-body-secondary">Ingresa tu correo para Recupera contraseña</p>
-            </div>
-
-            <?php include_once __DIR__ . "/../../views/includes/alertaTemplate.php"; ?>
-
-
-            <form action="/PHPMailer/index.php" method="POST">
-
-                <div class="input-group mb-2">
-                    <input type="email" class="form-control form-control-lg bg-light fs-6" name="correo_destinatario" placeholder="correo" required>
+                <div class="header-text mb-2">
+                    <h2 class="text-body-secondary">Hola, Bienvenidos a Repuestos JJJ</h2>
+                    <p class="text-body-secondary">Ingresa tu correo para Recupera contraseña</p>
                 </div>
-                <div for="correo_destinatario" id="correo_destinatario" class="g-recaptcha" data-sitekey="6LfaIgwqAAAAAFjrowWPA5vbDBONVvx83AP2Iv9S"></div>
-                <button type="submit" value="Enviar Correo"class="btn btn-lg btn-danger w-100 fs-6" style="background-color: #FF0000;">Recuperar</button>
-            </form>
+
+                <?php include_once __DIR__ . "/../../views/includes/alertaTemplate.php"; ?>
+
+
+                <form action="/recover" method="POST">
+
+                    <div class="input-group mb-2">
+                        <input type="email" class="form-control form-control-lg bg-light fs-6" name="correo" placeholder="correo" required>
+                    </div>
+                    <div for="correo_destinatario" id="correo_destinatario" class="g-recaptcha" data-sitekey="6LfaIgwqAAAAAFjrowWPA5vbDBONVvx83AP2Iv9S"></div>
+                    <button type="submit" value="Enviar Correo" class="btn btn-lg btn-danger w-100 fs-6" style="background-color: #FF0000;">Recuperar</button>
+                </form>
 
 
             </div>
 
-            </div>
+        </div>
 
-            </div>
+    </div>
 
-            </div>
+</div>
 
 
-    <script src="../JS/alerta_bloqueo.js"></script>
-    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+<script src="../JS/alerta_bloqueo.js"></script>
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </div>
