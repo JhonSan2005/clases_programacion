@@ -1,7 +1,6 @@
 <div class="container-xl px-4 mt-4">
     <nav class="nav nav-borders">
         <a class="nav-link active ms-0" href="/profile">Perfil</a>
-     
     </nav>
     <hr class="mt-0 mb-4">
     <div class="row">
@@ -28,13 +27,9 @@
                         <div class="mb-3">
                             <label class="small mb-1" for="password_actual">Contraseña Actual</label>
                             <input class="form-control" id="password_actual" name="password_actual" type="password" 
-                                placeholder="Ingresa tu contraseña actual">
+                                placeholder="Ingresa tu contraseña actual" value="<?php echo htmlspecialchars($password); ?>">
                         </div>
-                        <div class="mb-3">
-                            <label class="small mb-1" for="password_nueva">Nueva Contraseña</label>
-                            <input class="form-control" id="password_nueva" name="password_nueva" type="password" 
-                                placeholder="Ingresa tu nueva contraseña">
-                        </div>
+                        
                         <button class="btn btn-primary" type="submit">Guardar Cambios</button>
                     </form>
 

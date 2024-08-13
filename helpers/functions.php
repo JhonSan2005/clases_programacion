@@ -15,4 +15,14 @@ function isAuth(): bool {
     return isset($_SESSION['id']) && !empty($_SESSION);
 }
 
+function isAdmin(): bool {
+    if( session_status() === PHP_SESSION_NONE ) {
+        session_start();
+    }
+
+    return isset($_SESSION['id']) && isset($_SESSION['tipo_usuario']) && $_SESSION['tipo_usuario'] == 1;
+}
+
+
+
 ?>

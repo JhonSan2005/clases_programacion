@@ -57,23 +57,24 @@ $router->get('/close-session', [AuthController::class, 'closeSession']); // Cerr
 // Registrar rutas privadas (acceso restringido)
 $router->get('/profile', [ProfileController::class, 'index']); 
 $router->post('/profile/verPerfil', [ProfileController::class, 'actualizar']); // Manejo de actualización (POST)
-$router->get('/profile/contraseña', [ProfileController::class, 'actualizarpassword']); 
-$router->post('/profile/contraseña', [ProfileController::class, 'actualizarpassword']); 
+
+$router->post('/api/venta', [VentaController::class, 'vender']);
 
 // Solo Administrador
 $router->get('/admin/dashboard', [DashboardController::class, 'index']);
-
+$router->get('/admin/tablaUser', [DashboardController::class, 'tablaUser']);
 $router->get('/admin/products', [ProductController::class, 'verProductosAdmin']);
 $router->post('/admin/products', [ProductController::class, 'eliminarproductoadmin']);
 $router->get('/admin/agregarProductos', [ProductController::class, 'agregar']); 
 $router->post('/admin/agregarProductos', [ProductController::class, 'agregar']); 
 $router->get('/admin/orders', [DashboardController::class, 'index']);
 $router->get('/admin/profile', [ProfileController::class, 'index']);
+$router->get('/admin/categories', [CategoryController::class, 'agregarcategoria']);
+$router->post('/admin/categories', [CategoryController::class, 'agregarcategoria']);
 $router->get('/admin/categories', [CategoryController::class, 'verCategorias']);
 $router->post('/admin/categories', [CategoryController::class, 'eliminarCategoriaAdmin']); 
 $router->get('/admin/agregarCategoria', [CategoryController::class, 'agregarCategoria']);
 $router->post('/admin/agregarCategoria', [CategoryController::class, 'agregarCategoria']); 
-
 
 // Verificar y ejecutar la ruta actual
 $router->verifyRoutes();

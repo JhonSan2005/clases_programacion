@@ -1,3 +1,4 @@
+
 <div class="container mt-5">
     <div class="row">
         <div class="col">
@@ -42,3 +43,23 @@
         </div>
     </div>
 </div>
+<script>
+    function checkLogin() {
+        // Aquí se hace una solicitud AJAX para verificar si el usuario está logueado
+        fetch('/check_login.php')
+            .then(response => response.json())
+            .then(data => {
+                if (data.loggedIn) {
+                    // Si el usuario está logueado, redirige a la página de pago
+                    window.location.href = '/formaPago';
+                } else {
+                    // Si no está logueado, redirige al índice
+                    window.location.href = '/index';
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                // Opcionalmente, puedes manejar errores aquí
+            });
+    }
+    </script>

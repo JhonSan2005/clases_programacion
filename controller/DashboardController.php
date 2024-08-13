@@ -11,6 +11,13 @@ class DashboardController {
         ]);
 
     }
+    public static function tablaUser( Router $router ) {
+
+        $router->render('dashboard/tablaUser', [
+            "title" => "Dashboard"
+        ]);
+
+    }
     
 
 }

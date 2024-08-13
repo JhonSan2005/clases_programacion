@@ -39,14 +39,15 @@ class Usuario extends Conexion {
         return $resultado;
     }
 
-    public static function actualizarUsuario($documento, $nombre, $correo, $foto_perfil, $id) {
+    public static function actualizarUsuario($documento, $nombre, $correo, $password, $id) {
         $conexion = self::conectar();
-        $consulta = $conexion->prepare("UPDATE usuario SET documento=?, nombre=?, correo=?, foto_perfil=? WHERE id=?");
-        $consulta->bind_param('ssssi', $documento, $nombre, $correo, $foto_perfil, $id);
+        $consulta = $conexion->prepare("UPDATE usuario SET documento=?, nombre=?, correo=?, password=? WHERE id=?");
+        $consulta->bind_param('ssssi', $documento, $nombre, $correo, $password, $id);
         $resultado = $consulta->execute();
         
         return $resultado;
     }
+    
 
     public static function eliminarcuentauser($id) {
         $conexion = self::conectar();

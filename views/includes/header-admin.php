@@ -20,6 +20,10 @@
           <li class="nav-item">
             <a class="nav-link link-light fw-medium" href="/admin/dashboard">Dashboard</a>
           </li>
+          
+          <li class="nav-item">
+            <a class="nav-link link-light fw-medium" href="/admin/tablaUser">Tabla</a>
+          </li>
 
           <li class="nav-item">
             <a class="nav-link link-light fw-medium" href="/admin/products">Productos</a>

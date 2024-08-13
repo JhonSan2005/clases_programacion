@@ -41,12 +41,12 @@ class ProfileController {
             $documento = $_POST['documento'] ?? '';
             $nombre = $_POST['nombre'] ?? '';
             $correo = $_POST['correo'] ?? '';
-            $foto_de_perfil = $_POST['foto_de_perfil'] ?? '';
+            $password = htmlspecialchars($_POST['password_actual'] ?? ''); // Aquí agrego el htmlspecialchars
     
             // Asegúrate de que la sesión tenga el ID del usuario
             $id = $_SESSION['id'] ?? 0;
     
-            $resultado = Usuario::actualizarUsuario($documento, $nombre, $correo, $foto_de_perfil, $id);
+            $resultado = Usuario::actualizarUsuario($documento, $nombre, $correo, $password, $id);
         }
     
         // Obtener la información del usuario nuevamente para mostrar en la vista
@@ -61,6 +61,8 @@ class ProfileController {
             'correo' => $user['correo']
         ]);
     }
+    
+    
     public static function eliminarcuenta(Router $router) {
         if (!isAuth()) {
             return header("Location: /404");

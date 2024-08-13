@@ -13,7 +13,8 @@ $query = "
         (SELECT COUNT(*) FROM usuario) AS total_usuarios,
         (SELECT COUNT(*) FROM ventas) AS total_ventas,
         (SELECT COUNT(*) FROM productos) AS total_productos,
-        (SELECT COUNT(*) FROM categorias) AS total_categorias
+        (SELECT COUNT(*) FROM categorias) AS total_categorias,
+        (SELECT COUNT(*) FROM factura) AS total_facturas
 ";
 
 $result = $conexion->query($query);
@@ -34,6 +35,7 @@ if ($result) {
                 <p><strong>Total de Ventas:</strong> <?php echo htmlspecialchars($stats['total_ventas']); ?></p>
                 <p><strong>Total de Productos:</strong> <?php echo htmlspecialchars($stats['total_productos']); ?></p>
                 <p><strong>Total de Categorías:</strong> <?php echo htmlspecialchars($stats['total_categorias']); ?></p>
+                <p><strong>Total de Facturas Generadas:</strong> <?php echo htmlspecialchars($stats['total_facturas']); ?></p>
             </div>
         </div>
         <div class="col-md-6">
@@ -50,16 +52,17 @@ if ($result) {
 document.addEventListener('DOMContentLoaded', function() {
     // Datos de las estadísticas
     const data = {
-        labels: ['Usuarios', 'Ventas', 'Productos', 'Categorías'],
+        labels: ['Usuarios', 'Ventas', 'Productos', 'Categorías', 'Facturas'],
         datasets: [{
             label: 'Estadísticas',
             data: [
                 <?php echo (int)$stats['total_usuarios']; ?>,
                 <?php echo (int)$stats['total_ventas']; ?>,
                 <?php echo (int)$stats['total_productos']; ?>,
-                <?php echo (int)$stats['total_categorias']; ?>
+                <?php echo (int)$stats['total_categorias']; ?>,
+                <?php echo (int)$stats['total_facturas']; ?>
             ],
-            backgroundColor: ['#FF5733', '#33FF57', '#3357FF', '#FF33A1'],
+            backgroundColor: ['#FF5733', '#33FF57', '#3357FF', '#FF33A1', '#FFBF00'],
             borderColor: '#000',
             borderWidth: 1,
             borderRadius: 5, // Bordes redondeados en el gráfico
