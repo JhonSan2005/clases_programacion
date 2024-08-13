@@ -1,0 +1,11 @@
+#Activar rewrite
+RewriteEngine on
+
+# ErrorDocument 404 http://localhost/404
+RewriteCond %{SCRIPT_FILENAME} !-d
+RewriteCond %{SCRIPT_FILENAME} !-f
+
+RewriteRule ^([a-zA-Z\-]+)$ index.php
+RewriteRule ^([a-zA-Z\-]+)/$ index.php
+RewriteRule ^([a-zA-Z\-]+)/$ index.php
+RewriteRule ^([a-zA-Z\-]+)/$ index.php
